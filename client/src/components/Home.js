@@ -1,6 +1,7 @@
 import NavBar from "./NavBar";
 import BoxBlog from "./BoxBlog";
 import SwitchBlogs from "./SwitchBlogs";
+import SideBar from "./SideBar";
 const Home = () => {
     const boxes = [];
 for (let i = 0; i < 8; i++) {
@@ -10,10 +11,13 @@ for (let i = 0; i < 8; i++) {
         <div>
             <NavBar />
             <SwitchBlogs />
-            <div className="flex flex-wrap justify-start mx-[5%]">
-                 {boxes}   
-
+            <div className='flex justify-start'>
+                <div className="flex flex-wrap justify-start ml-[5%]">
+                    {boxes}   
+                </div>
+                <SideBar />
             </div>
+            
             
         </div>
      );
