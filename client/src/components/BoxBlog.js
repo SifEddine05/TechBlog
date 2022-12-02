@@ -7,8 +7,8 @@ import { Link } from 'react-router-dom/cjs/react-router-dom.min'
 
 const BoxBlog = () => {
     return ( 
-    <div className="lg:h-[320px] shadow-2xl rounded-xl lg:w-[250px]  md:w-[180px]  sm:w-[150px] w-[100px]  md:h-[250px] sm:h-[200px] pb-2 " >
-        <Link to='/blogs/:id'>
+    <div className=" mr-[1%] mb-[1%] lg:h-[320px] shadow-2xl rounded-xl lg:w-[250px]  md:w-[180px]  sm:w-[150px] w-[100px]  md:h-[250px] sm:h-[200px] pb-2 " >
+        <Link to='/blogs/:id' >
             <div className='h-[55%]'>
                 <img src={bg} alt="bg" className='rounded-xl p-1 h-[100%] w-[100%]' />
             </div>
