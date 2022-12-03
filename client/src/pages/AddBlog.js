@@ -3,7 +3,6 @@
 import { useState } from "react";
 
 const AddBlog = () => {
-    const [title,Settitle] =useState('')
     const[Time,setTime]=useState(Date().toLocaleString())
     const getTime = ()=>{
         setTime(Date().toLocaleString())
