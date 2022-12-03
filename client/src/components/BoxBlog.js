@@ -4,7 +4,7 @@ import date from '../assets/date.png'
 import more from '../assets/more.png'
 import { Link } from 'react-router-dom/cjs/react-router-dom.min'
 
-
+// we need a function to see if the blog existe in the table of user blogs we add delete and mofdifie button else we dont 
 const BoxBlog = () => {
     return ( 
     <div className=" mr-[1%] mb-[1%] lg:h-[320px] shadow-2xl rounded-xl lg:w-[250px]  md:w-[180px]  sm:w-[150px] w-[100px]  md:h-[250px] sm:h-[200px] pb-2 " >

@@ -1,7 +1,6 @@
-import NavBar from "./NavBar";
-import BoxBlog from "./BoxBlog";
-import SwitchBlogs from "./SwitchBlogs";
-import SideBar from "./SideBar";
+import BoxBlog from "../components/BoxBlog";
+import SwitchBlogs from "../components/SwitchBlogs";
+import SideBar from "../components/SideBar"
 const Home = () => {
     const boxes = [];
 for (let i = 0; i < 8; i++) {
@@ -9,7 +8,6 @@ for (let i = 0; i < 8; i++) {
 }
     return ( 
         <div>
-            <NavBar />
             <SwitchBlogs />
             <div className='flex justify-start'>
                 <div className="flex flex-wrap justify-start ml-[5%]">
