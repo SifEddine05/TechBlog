@@ -13,7 +13,7 @@ const ShowBlog = () => {
             <img src={bg} alt='blog' className='w-[50%]  sahdow-sm rounded-lg'/>
         </div>
         <hr className='mt-[5%] mb-[5%] '/>
-        <p className='text-left mt-[3%] mb-[10%] lg:text-[16px] md:text-[13px] sm:text-[10px] text-[7px] w-[75%] leading-8 text-center mx-auto'>jsqdhjqshdjk sjqhfdjkgdsqfhg djsfhjksdgfjksdj j hjsdhjfhjkdshvj hdsjhfjksdhjhfjdshjk jshfjhdsjkhjfhjf jhdjfhhfjdshj </p>
+        <p className='text-left  mb-[10%] lg:text-[16px] md:text-[13px] sm:text-[10px] text-[7px] w-[75%] leading-8 text-center mx-auto'>jsqdhjqshdjk sjqhfdjkgdsqfhg djsfhjksdgfjksdj j hjsdhjfhjkdshvj hdsjhfjksdhjhfjdshjk jshfjhdsjkhjfhjf jhdjfhhfjdshj </p>
         
         
     </div>  );
