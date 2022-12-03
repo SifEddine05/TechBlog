@@ -45,7 +45,7 @@ const handlClick = (e)=>{
           <button className={style3} value='myblogs' onClick={handlClick}>My blogs</button>
         </div>
         {addBlog && <Link to='/newBlog' className='flex justify-end mr-[20%] group items-center' >
-            <button className=' shadow-xl border rounded-lg p-2 font-medium w-[4%]'> <img src={add} alt='add' className='w-full' /> </button>          
+            <button className=' shadow-xl border rounded-lg lg:p-2 md:p-1.5 sm:p-1 p-0.5 font-medium w-[4%]'> <img src={add} alt='add' className='w-full' /> </button>          
             <p className='hidden group-hover:block  hover:text-[#29abe2] lg:text-[18px] md:text-[16px] sm:text-[12px] text-[8px] font-medium ml-1'>Add Blog</p>
         </Link> }
     </div>

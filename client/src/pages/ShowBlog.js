@@ -24,7 +24,7 @@ const ShowBlog = () => {
         </div>
         <hr className='mt-[5%] mb-[5%] '/>
         <p className='  mb-[5%] lg:text-[18px] md:text-[15px] sm:text-[12px] text-[9px] w-[75%] lg:leading-8  md:leading-6 sm:leading-4 leading-2 text-center mx-auto'>
-            In his tractibus navigerum nusquam visitur flumen sed in locis plurimis aquae suapte natura calentes emergunt ad usus aptae multiplicium medelarum. verum has quoque regiones pari sorte Pompeius Iudaeis domitis et Hierosolymis captis in provinciae speciem delata iuris dictione formavit.
+            In his tractibus navigerum nusquam visitur flumen sed in locis plurimis aquae suapte natura calentes emergunt ad usus aptae multiplicium medelarum. verum has quoque regiones pari sorte Pompeius Iudaeis domitis et Hierosolymis captis in provinciae speciem delata iuris dictione formavit
 
             Procedente igitur mox tempore cum adventicium nihil inveniretur, relicta ora maritima in Lycaoniam adnexam Isauriae se contulerunt ibique densis intersaepientes itinera praetenturis provincialium et viatorum opibus pascebantur.
 

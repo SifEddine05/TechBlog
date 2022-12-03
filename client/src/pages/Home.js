@@ -9,8 +9,8 @@ for (let i = 0; i < 8; i++) {
     return ( 
         <div>
             <SwitchBlogs />
-            <div className='flex justify-start'>
-                <div className="flex flex-wrap justify-start ml-[5%]">
+            <div className='flex justify-center'>
+                <div className="flex flex-wrap justify-center ml-[2%]">
                     {boxes}   
                 </div>
                 <SideBar />

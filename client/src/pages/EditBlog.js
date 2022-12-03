@@ -1,16 +1,14 @@
-
-
 import { useState } from "react";
 
-const AddBlog = () => {
+
+const EditBlog = () => {
     const[Time,setTime]=useState(Date().toLocaleString())
     const getTime = ()=>{
         setTime(Date().toLocaleString())
     } 
-    return ( 
-        
-    <div className="shadow-xl mx-[10%] lg:p-5 md:p-4 sm:p-3 p-2 bg-[#29abe2] bg-opacity-5 rounded-xl">
-        <h1 className='text-center lg:text-[40px] md:text-[30px]  sm:text-[20px]  text-[10px]  lg:mb-10 md:mb-8 sm:mb-6 mb-4 font-semibold text-[#29abe2] '>Add New Blog</h1>
+    return (
+        <div className="shadow-xl mx-[10%] lg:p-5 md:p-4 sm:p-3 p-2 bg-[#29abe2] bg-opacity-5 rounded-xl">
+        <h1 className='text-center lg:text-[40px] md:text-[30px]  sm:text-[20px]  text-[10px]  lg:mb-10 md:mb-8 sm:mb-6 mb-4 font-semibold text-[#29abe2] '>Edit Blog</h1>
         <form action='post' className="ml-[15%]">
             <div className="flex justify-start  items-center ">
                 <label className="lg:text-[18px] mr-[10%]  md:text-[15px] sm:text-[12px] text-[9px] font-medium "> Name <br/>
@@ -44,7 +42,7 @@ const AddBlog = () => {
                 </label>
                 <label className='lg:text-[18px] mr-[5%] md:text-[15px] sm:text-[12px] text-[8px] font-medium text-left '>
                     Description <br/>
-                    <textarea cols="40" rows="7" required placeholder="Write a description about your blog in 200 letters"  maxlength="200" size='200' className="w-full bg-gray-50 border-2 shadow-lg  border-gray-300 text-gray-900 lg:text-[16px] md:text-[13px] sm:text-[10px] text-[7px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block  md:p-2.5 p-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"></textarea>
+                    <textarea cols="40" rows="7" required placeholder="Write a description about your blog in 200 letters"  maxlength="200" size='200' className="w-full  bg-gray-50 border-2 shadow-lg  border-gray-300 text-gray-900 lg:text-[16px] md:text-[13px] sm:text-[10px] text-[7px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block  md:p-2.5 p-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"></textarea>
                 </label>
             </div>
             <div className="mt-[10%] flex justify-start">
@@ -62,7 +60,6 @@ const AddBlog = () => {
             </div>
         </form>
     </div>
-     );
+    );
 }
- 
-export default AddBlog;
+export default EditBlog;
