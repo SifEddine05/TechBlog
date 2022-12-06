@@ -26,7 +26,7 @@ const SideBar = () => {
                     <input type="search" value={search} placeholder="search by words" maxLength='10' onInput={handelChangeText} className=" mb-[10%] bg-gray-50 border-2 shadow-lg border-gray-300 text-gray-900 lg:text-[16px] md:text-[13px] sm:text-[10px] text-[7px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full md:p-2.5 p-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"/>
                 </label>
                 <label className='lg:text-[18px] md:text-[14px] sm:text-[12px] text-[7px] font-medium text-left leading-1' >Filter By Category <br/>
-                    <select value={FilterCategory} onChange={handlChange1} className=" w-full font-medium bg-gray-50 border-2 shadow-lg border-gray-300 mb-[10%] text-gray-900 lg:text-[16px] md:text-[13px] sm:text-[10px] text-[7px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block  lg:p-2.5 p-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <select value={FilterCategory} onChange={handlChange1} className="hover:cursor-pointer w-full font-medium bg-gray-50 border-2 shadow-lg border-gray-300 mb-[10%] text-gray-900 lg:text-[16px] md:text-[13px] sm:text-[10px] text-[7px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block  lg:p-2.5 p-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             <option selected value= {'All'}>All</option>
                             <option value={'web'}>Web Developpment </option>
                             <option value={'Bc'}>Block Chaine</option>
@@ -36,7 +36,7 @@ const SideBar = () => {
                         </select>
                 </label>
                 <label className='lg:text-[18px] md:text-[14px] sm:text-[12px] text-[7px] font-medium text-left leading-1' >Filter By Author<br/>
-                    <select  value={FilterAuthor} onChange={handlChange2}  className=" w-full font-medium bg-gray-50 border-2 shadow-lg border-gray-300 text-gray-900 lg:text-[16px] md:text-[13px] sm:text-[10px] text-[7px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block  lg:p-2.5 p-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <select  value={FilterAuthor} onChange={handlChange2}  className=" w-full hover:cursor-pointer font-medium bg-gray-50 border-2 shadow-lg border-gray-300 text-gray-900 lg:text-[16px] md:text-[13px] sm:text-[10px] text-[7px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block  lg:p-2.5 p-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             <option selected value={'All'}>All</option>
                             <option value={'Sifou'}>Sifou </option>
                             <option value={'Khaled'}>Khaled</option>

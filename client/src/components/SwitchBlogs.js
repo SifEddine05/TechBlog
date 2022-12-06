@@ -6,8 +6,8 @@ import { Link } from 'react-router-dom/cjs/react-router-dom.min'
 
 export default function SwitchBlogs() {
 
-    const stl1='lg:text-[18px] md:text-[16px] sm:text-[12px] text-[8px]  shadow-xl border rounded-sm p-2 font-medium'
-    const stl2='lg:text-[18px] md:text-[16px] sm:text-[12px] text-[8px]  shadow-xl border rounded-sm p-2 font-medium text-[#29abe2]	 bg-[#000] bg-opacity-5  shadow-inner'
+    const stl1='lg:text-[18px] md:text-[16px] sm:text-[12px] text-[8px]  shadow-xl border rounded-sm md:p-2 p-1 font-medium'
+    const stl2='lg:text-[18px] md:text-[16px] sm:text-[12px] text-[8px]  shadow-xl border rounded-sm md:p-2 p-1 font-medium text-[#29abe2]	 bg-[#000] bg-opacity-5  shadow-inner'
     const [style1,setStyle1] =useState(stl2)
     const [style2,setStyle2] =useState(stl1)
     const [style3,setStyle3] =useState(stl1)
@@ -45,7 +45,7 @@ const handlClick = (e)=>{
           <button className={style3} value='myblogs' onClick={handlClick}>My blogs</button>
         </div>
         {addBlog && <Link to='/newBlog' className='flex justify-end mr-[20%] group items-center' >
-            <button className=' shadow-xl border rounded-lg lg:p-2 md:p-1.5 sm:p-1 p-0.5 font-medium w-[4%]'> <img src={add} alt='add' className='w-full' /> </button>          
+            <button className=' shadow-xl border rounded-lg lg:p-2 md:p-1.5 sm:p-1 p-0.5 font-medium w-[5%]'> <img src={add} alt='add' className='w-full' /> </button>          
             <p className='hidden group-hover:block  hover:text-[#29abe2] lg:text-[18px] md:text-[16px] sm:text-[12px] text-[8px] font-medium ml-1'>Add Blog</p>
         </Link> }
     </div>

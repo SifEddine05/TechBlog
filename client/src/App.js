@@ -6,6 +6,8 @@ import EditBlog from "./pages/EditBlog";
 import Login from "./pages/Login";
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import SignUp from "./pages/SignUp";
+import Forgotpwd from "./pages/Forgotpwd";
 
 function App() {
   return (
@@ -17,6 +19,9 @@ function App() {
         <Route exact path="/blogs/:id"><NavBar /> <ShowBlog /></Route>
         <Route exact path="/edit"> <NavBar /> <EditBlog /></Route>
         <Route exact path="/login" ><Login /></Route>
+        <Route exact path="/signup" ><SignUp /></Route>
+        <Route exact path="/frgpass" ><Forgotpwd /></Route>
+
       </Switch>
     </Router>
    

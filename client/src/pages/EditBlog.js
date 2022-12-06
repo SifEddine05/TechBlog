@@ -38,7 +38,7 @@ const EditBlog = () => {
             <div className='flex justify-start  items-center lg:mt-10 md:mt-8 sm:mt-6 mt-4'>
                 <label className='lg:text-[18px] mr-[5%] md:text-[15px] sm:text-[12px] text-[8px] font-medium text-left ' >
                     Upload a photo for your Blog <br/>
-                    <input type='file' required className="md:text-[15px] sm:text-[12px] text-[9px] hover:cursor-pointer " />
+                    <input type='file' required  accept="image/*" className="md:text-[12px] sm:text-[10px] text-[7px] w-[100%] hover:cursor-pointer " />
                 </label>
                 <label className='lg:text-[18px] mr-[5%] md:text-[15px] sm:text-[12px] text-[8px] font-medium text-left '>
                     Description <br/>
