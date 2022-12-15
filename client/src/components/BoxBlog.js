@@ -3,6 +3,7 @@ import note from '../assets/note.png'
 import date from '../assets/date.png'
 import more from '../assets/more.png'
 import { Link } from 'react-router-dom/cjs/react-router-dom.min'
+import{ AiOutlineEye } from 'react-icons/ai'
 
 // we need a function to see if the blog existe in the table of user blogs we add delete and mofdifie button else we dont 
 const BoxBlog = () => {
@@ -30,10 +31,15 @@ const BoxBlog = () => {
             <div>
                 <p className=' lg:text-[14px] md:text-[10px] sm:text-[7px] text-[6px] text-center textopacity-75 mt-2'>jkdfhshdkfhdj skqffjqjjkfjqkjf jsfkqkfjjfkqdjfk lqfkljklqjdkfjjfj</p>
             </div>
-            <div className='flex justify-end group items-center mt-1'>
+            <div className='flex justify-end group items-end mt-1 mr-2'>
+                <AiOutlineEye />
+                <p className='text-[10px]'>123</p>
+
+            </div>
+            {/* <div className='flex justify-end group items-center mt-1'>
                 <img src={more} alt='more' className='w-[10%] hover:cursor-pointer mr-1'/> 
                 <Link to='/blogs/:id ' className=' hidden group-hover:block hover:text-[#29abe2] lg:text-[14px] md:text-[10px] sm:text-[7px] text-[6px] text-[#000]'>See more</Link>
-            </div>
+            </div> */}
         </Link>
         
         

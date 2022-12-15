@@ -9,6 +9,9 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import SignUp from "./pages/SignUp";
 import Forgotpwd from "./pages/Forgotpwd";
 
+
+
+
 function App() {
   return (
    
