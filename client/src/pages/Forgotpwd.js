@@ -7,9 +7,9 @@ const Forgotpwd = () => {
                 <p className=' mt-[2%]  lg:text-[18px] md:text-[15px] sm:text-[12px] text-[9px]  text-center  '>we'll email you a link to rest your password </p>
                 <br   />
                 <label className="lg:text-[18px]  md:text-[15px] sm:text-[12px] text-[9px] mx-[33%] font-medium "> Email <br/>
-                    <input type="email" required placeholder="john.doe@company.com" maxLength='50'  className="bg-gray-50 w-[35%]  mx-auto border-2 shadow-lg border-gray-300 text-gray-900 lg:text-[16px] md:text-[13px] sm:text-[10px] text-[7px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block  md:p-2.5 p-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"/>
+                    <input type="email" required placeholder="john.doe@company.com" maxLength='50'  className="bg-gray-50 w-[35%]  mx-auto border-2 shadow-lg border-gray-300 text-gray-900 lg:text-[16px] md:text-[13px] sm:text-[10px] text-[7px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block  md:p-2.5 p-1 "/>
                 </label>
-                <button className=" mb-[2%]  border-2 shadow-lg border-gray-300 text-gray-900 bg-[#29abe2] hover:cursor-pointer hover:text-white lg:text-[16px] font-semibold md:text-[13px] sm:text-[10px] text-[7px] rounded-lg focus:ring-blue-500 focus:border-blue-500    md:p-2.5 p-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 block w-[25%] mx-auto"  >Reset</button>
+                <button className=" mb-[2%]  border-2 shadow-lg border-gray-300 text-gray-900 bg-[#29abe2] hover:cursor-pointer hover:text-white lg:text-[16px] font-semibold md:text-[13px] sm:text-[10px] text-[7px] rounded-lg focus:ring-blue-500 focus:border-blue-500    md:p-2.5 p-1  block w-[25%] mx-auto"  >Reset</button>
             </div>
         </div>     
     </div> );

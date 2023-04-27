@@ -8,7 +8,7 @@ import{ AiOutlineEye } from 'react-icons/ai'
 // we need a function to see if the blog existe in the table of user blogs we add delete and mofdifie button else we dont 
 const BoxBlog = () => {
     return ( 
-    <div className=" mr-[1%] mb-[1%] lg:h-[320px] shadow-2xl rounded-xl lg:w-[250px]  md:w-[180px]  sm:w-[150px] w-[100px]  md:h-[250px] sm:h-[200px] pb-2 " >
+    <div className=" mr-[1%] mb-[1%] lg:h-[320px] shadow-2xl rounded-xl lg:w-[250px]  md:w-[180px]  w-[150px]  md:h-[250px] sm:h-[200px] pb-2 " >
         <Link to='/blogs/:id' >
             <div className='h-[55%]'>
                 <img src={bg} alt="bg" className='rounded-xl p-1 h-[100%] w-[100%]' />
@@ -31,9 +31,9 @@ const BoxBlog = () => {
             <div>
                 <p className=' lg:text-[14px] md:text-[10px] sm:text-[7px] text-[6px] text-center textopacity-75 mt-2'>jkdfhshdkfhdj skqffjqjjkfjqkjf jsfkqkfjjfkqdjfk lqfkljklqjdkfjjfj</p>
             </div>
-            <div className='flex justify-end group items-end mt-1 mr-2'>
-                <AiOutlineEye />
-                <p className='text-[10px]'>123</p>
+            <div className='flex justify-end group sm:items-end items-center mt-1 mr-2 sm:w-full w-full'>
+                <AiOutlineEye className='sm:w-fit w-[10px]  sm:ml-0 sm:mb-0 ml-2 mb-2'/>
+                <p className='sm:text-[10px] text-[8px] sm:ml-0 sm:mb-0 mr-2 mb-2'>123</p>
 
             </div>
             {/* <div className='flex justify-end group items-center mt-1'>
