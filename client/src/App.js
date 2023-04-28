@@ -11,7 +11,6 @@ import Forgotpwd from "./pages/Forgotpwd";
 
 
 
-
 function App() {
   return (
    
