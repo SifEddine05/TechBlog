@@ -3,8 +3,10 @@ const express = require('express') ;
 const app = express();
 const mongoose= require('mongoose') ;
 const cors = require('cors')
-const Blogs = require('./models/Blogs.js')
-const BlogsController = require('./Controllers/BlogsController')
+const dotenv = require('dotenv')
+
+const BlogsRoutes = require('./routes/BlogsRoutes')
+const AuthRoutes  =require('./routes/AuthRoutes')
 // user : TechBlog
 //password : sifou123456789
 
@@ -22,17 +24,11 @@ mongoose.connect(dbURI,{ useNewUrlParser: true, useUnifiedTopology: true })
     app.use(express.json());
     app.use(express.urlencoded({extended:true}))
     app.use(cors())
+    dotenv.config()
 
-    app.get('/blogs' , BlogsController.getblogs)
-
-    app.post('/newBlog' ,BlogsController.addBlog)  ; 
-
-
-    app.get('/getBlog/:id', BlogsController.getBlog)
-
-    app.put('/edit',BlogsController.editBlog)
-
-    app.delete('/delete/:id' , BlogsController.delete)
+    app.use(BlogsRoutes)
+    app.use(AuthRoutes)
+   
     // add delete Blog 
 
     /*{
