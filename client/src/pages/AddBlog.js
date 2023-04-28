@@ -4,8 +4,30 @@ import { useState } from "react";
 
 const AddBlog = () => {
     const[Time,setTime]=useState(Date().toLocaleString())
-    const getTime = ()=>{
+    const [name,setName]=useState('')
+    const [email,setEmail]=useState('')
+    const [title,setTitle]=useState('')
+    const [category,setCategory]=useState('')
+    const [description,setDescription]=useState('')
+    const [body,setBody]=useState('')
+
+    const submit = ()=>{
         setTime(Date().toLocaleString())
+        console.log(Time,name,email,title,category,description,body);
+        const blog = {
+            title:title ,
+            category:category,
+            auther:name,
+            description:description,
+            body:body,
+            nbr_views:0,
+        }
+        fetch('http://localhost:5000/newBlog' , { method : 'POST' , 
+				      headers : {"Content-Type" : "application/json" },  
+				      body : JSON.stringify(blog) 
+				      } )
+				      .then((res)=> console.log(res) )
+				      .catch(err=> console.log('err'))
     } 
     return ( 
         
@@ -14,20 +36,18 @@ const AddBlog = () => {
         <form action='post' className="ml-[15%]">
             <div className="flex justify-start  items-center ">
                 <label className="lg:text-[18px] mr-[10%]  md:text-[15px] sm:text-[12px] text-[9px] font-medium "> Name <br/>
-                    <input type="text" required placeholder="john" maxLength='20'  className="bg-gray-50 border-2 shadow-lg border-gray-300 text-gray-900 lg:text-[16px] md:text-[13px] sm:text-[10px] text-[7px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full md:p-2.5 p-1 "/>
+                    <input value={name} onChange={(e)=>{setName(e.target.value)}} type="text" required placeholder="john" maxLength='20'  className="bg-gray-50 border-2 shadow-lg border-gray-300 text-gray-900 lg:text-[16px] md:text-[13px] sm:text-[10px] text-[7px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full md:p-2.5 p-1 "/>
                 </label>
                 <label className="lg:text-[18px]  md:text-[15px] sm:text-[12px] text-[9px] font-medium "> Email <br/>
-                    <input type="email" required placeholder="john.doe@company.com" maxLength='50'  className="bg-gray-50 border-2 shadow-lg border-gray-300 text-gray-900 lg:text-[16px] md:text-[13px] sm:text-[10px] text-[7px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full md:p-2.5 p-1 "/>
+                    <input value={email} onChange={(e)=>{setEmail(e.target.value)}} type="email" required placeholder="john.doe@company.com" maxLength='50'  className="bg-gray-50 border-2 shadow-lg border-gray-300 text-gray-900 lg:text-[16px] md:text-[13px] sm:text-[10px] text-[7px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full md:p-2.5 p-1 "/>
                 </label> 
             </div>
-               
-                
             <div className='   flex justify-start items-center lg:mt-10 md:mt-8 sm:mt-6 mt-4'>
                 <label className="  lg:text-[18px]   mr-[10%] md:text-[15px] sm:text-[12px] text-[9px] font-medium text-left "> Title<br/>
-                    <input type="text" required placeholder="Machine Learning"  maxlength="20"  className="w-full bg-gray-50 border-2 shadow-lg  border-gray-300 text-gray-900 lg:text-[16px] md:text-[13px] sm:text-[10px] text-[7px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block  md:p-2.5 p-1 "/>
+                    <input value={title} onChange={(e)=>{setTitle(e.target.value)}} type="text" required placeholder="Machine Learning"  maxlength="20"  className="w-full bg-gray-50 border-2 shadow-lg  border-gray-300 text-gray-900 lg:text-[16px] md:text-[13px] sm:text-[10px] text-[7px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block  md:p-2.5 p-1 "/>
                 </label>
                 <label className='lg:text-[18px]  md:text-[15px] sm:text-[12px] text-[9px] font-medium text-left ' >The Category <br/>
-                    <select required className=" w-full font-medium bg-gray-50 border-2 shadow-lg border-gray-300 text-gray-900 lg:text-[16px] md:text-[13px] sm:text-[10px] text-[7px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block  lg:p-2.5 p-1 ">
+                    <select value={category} onChange={(e)=>{setCategory(e.target.value)}}   required className=" w-full font-medium bg-gray-50 border-2 shadow-lg border-gray-300 text-gray-900 lg:text-[16px] md:text-[13px] sm:text-[10px] text-[7px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block  lg:p-2.5 p-1 ">
                             <option selected className="opacity-75">Choose a category</option>
                             <option value={'web'}>Web Developpment </option>
                             <option value={'Bc'}>Block Chaine</option>
@@ -44,13 +64,13 @@ const AddBlog = () => {
                 </label>
                 <label className='lg:text-[18px] mr-[5%] md:text-[15px] sm:text-[12px] text-[8px] font-medium text-left '>
                     Description <br/>
-                    <textarea cols="40" rows="7" required placeholder="Write a description about your blog in 200 letters"  maxlength="200" size='200' className="w-full bg-gray-50 border-2 shadow-lg  border-gray-300 text-gray-900 lg:text-[16px] md:text-[13px] sm:text-[10px] text-[7px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block  md:p-2.5 p-1 "></textarea>
+                    <textarea value={description} onChange={(e)=>{setDescription(e.target.value)}} cols="40" rows="7" required placeholder="Write a description about your blog in 200 letters"  maxlength="200" size='200' className="w-full bg-gray-50 border-2 shadow-lg  border-gray-300 text-gray-900 lg:text-[16px] md:text-[13px] sm:text-[10px] text-[7px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block  md:p-2.5 p-1 "></textarea>
                 </label>
             </div>
             <div className="mt-[10%] flex justify-start">
             <label className='lg:text-[18px] mr-[10%] md:text-[15px] sm:text-[12px] text-[8px] font-medium text-left '>
                 The Blog <br/>
-                <textarea  cols="75" rows="17"required placeholder="Write your blog"  className="w-full h-full bg-gray-50 border-2 shadow-lg  border-gray-300 text-gray-900 lg:text-[16px] md:text-[13px] sm:text-[10px] text-[7px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block  md:p-2.5 p-1 "></textarea>
+                <textarea value={body} onChange={(e)=>{setBody(e.target.value)}} cols="75" rows="17"required placeholder="Write your blog"  className="w-full h-full bg-gray-50 border-2 shadow-lg  border-gray-300 text-gray-900 lg:text-[16px] md:text-[13px] sm:text-[10px] text-[7px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block  md:p-2.5 p-1 "></textarea>
             </label>
             </div>
             <div className="mt-[10%]">
@@ -58,7 +78,7 @@ const AddBlog = () => {
                     Date of Publication 
                     <input type="text" disabled value={Time} required   className="mr-[5%] w-[90%] bg-gray-50 border-2 shadow-lg border-gray-300 text-gray-900 lg:text-[16px] md:text-[13px] sm:text-[10px] text-[7px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block  md:p-2.5 p-1 "/>
                 </label>
-                <input type="submit" className=" mb-[10%]  border-2 shadow-lg border-gray-300 text-gray-900 bg-[#29abe2] hover:cursor-pointer hover:text-white lg:text-[16px] font-semibold md:text-[13px] sm:text-[10px] text-[7px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block   md:p-2.5 p-1 " onClick={getTime} />
+                <input type="submit" className=" mb-[10%]  border-2 shadow-lg border-gray-300 text-gray-900 bg-[#29abe2] hover:cursor-pointer hover:text-white lg:text-[16px] font-semibold md:text-[13px] sm:text-[10px] text-[7px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block   md:p-2.5 p-1 " onClick={submit} />
             </div>
         </form>
     </div>

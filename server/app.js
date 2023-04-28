@@ -2,6 +2,7 @@
 const express = require('express') ;
 const app = express();
 const mongoose= require('mongoose') ;
+const cors = require('cors')
 const Blogs = require('./models/Blogs.js')
 const BlogsController = require('./Controllers/BlogsController')
 // user : TechBlog
@@ -20,14 +21,14 @@ mongoose.connect(dbURI,{ useNewUrlParser: true, useUnifiedTopology: true })
 
     app.use(express.json());
     app.use(express.urlencoded({extended:true}))
+    app.use(cors())
 
-
-    app.get('/' , BlogsController.getblogs)
+    app.get('/blogs' , BlogsController.getblogs)
 
     app.post('/newBlog' ,BlogsController.addBlog)  ; 
 
 
-    app.get('/getBlog', BlogsController.getBlog)
+    app.get('/getBlog/:id', BlogsController.getBlog)
 
     app.put('/edit',BlogsController.editBlog)
 
