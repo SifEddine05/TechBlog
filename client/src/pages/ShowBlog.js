@@ -51,14 +51,14 @@ const ShowBlog = () => {
     <div  className="shadow-xl mx-[10%] rounded-lg bg-[#29abe2] my-[3%] bg-opacity-5 lg:p-5 md:p-4 sm:p-3 p-2">   
         {error && <h3 className="mt-4 md:text-lg text-sm text-red-600 font-bold mb-4 ml-4">{error} </h3> }     
         <div className='flex justify-between'>
-            <div>
+            <div className='w-[50%]'>
                 <h1 className='text-center lg:text-[40px] md:text-[30px]  sm:text-[20px]  text-[10px]   font-semibold  '>{blog.title}</h1>
                 <p className='text-left opacity-50 lg:text-[16px] md:text-[13px] sm:text-[10px] text-[7px]'> #{blog.category}</p>
                 <p className='text-left mt-[3%] lg:text-[16px] md:text-[13px] sm:text-[10px] text-[7px] w-[75%]  inline'> {blog.description} </p>
                 <p className='text-left mt-[10%] lg:text-[16px] md:text-[13px] sm:text-[10px] text-[7px] font-semibold'>Created By: <span className='text-left ml-1 lg:text-[16px] md:text-[13px] sm:text-[10px] text-[7px] font-normal opacity-75'> {blog.auther}</span> </p>
                 <p className='text-left mt-[5%] lg:text-[14px] md:text-[11px] sm:text-[8px] text-[5px] opasity-50 '> In {blog.createdAt}</p>
             </div>
-            <div className='w-[100%] self-center'><img src={bg} alt='blog' className='w-[100%]  sahdow-sm rounded-lg'/></div>
+            <div className='w-[50%] '><img src={blog.image} alt='blog' className='w-[100%]  sahdow-sm rounded-lg'/></div>
         </div>
         <hr className='mt-[5%] mb-[5%] '/>
         <p className='  mb-[5%] lg:text-[18px] md:text-[15px] sm:text-[12px] text-[9px] w-[75%] lg:leading-8  md:leading-6 sm:leading-4 leading-2 text-center mx-auto'>

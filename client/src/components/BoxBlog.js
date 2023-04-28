@@ -6,12 +6,12 @@ import { Link } from 'react-router-dom'
 import{ AiOutlineEye } from 'react-icons/ai'
 
 // we need a function to see if the blog existe in the table of user blogs we add delete and mofdifie button else we dont 
-const BoxBlog = ({title,author,date1,body,views,_id}) => {
+const BoxBlog = ({title,author,date1,body,views,_id,image}) => {
     return ( 
     <div className=" mr-[1%] mb-[1%] lg:h-[320px] shadow-2xl rounded-xl lg:w-[250px]  md:w-[180px]  w-[150px]  md:h-[250px] sm:h-[200px] pb-2 " >
         <Link to={'/blogs/'+_id} >
             <div className='h-[55%]'>
-                <img src={bg} alt="bg" className='rounded-xl p-1 h-[100%] w-[100%]' />
+                <img src={image} alt="bg" className='rounded-xl p-1 h-[100%] w-[100%]' />
             </div>
             <div className='flex justify-center'>
                 <h3 className='lg:text-[18px] md:text-[14px] sm:text-[10px] text-[10px] font-black  '>{title}</h3>

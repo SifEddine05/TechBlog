@@ -37,7 +37,7 @@ useEffect(()=>{
             <div className='flex justify-center  flex-col-reverse'>
                 <div className="flex flex-wrap justify-center ml-[2%]">
                     {boxes.map((elem=>{
-                       return( <BoxBlog key={elem._id} title={elem.title} author={elem.auther} date1={elem.createdAt} body={elem.description} views={elem.nbr_views} _id={elem._id} />)
+                       return( <BoxBlog key={elem._id} title={elem.title} image={elem.image}author={elem.auther} date1={elem.createdAt} body={elem.description} views={elem.nbr_views} _id={elem._id} />)
                     }))}   
                 </div>
                 <SideBar func={setBoxes} blogs={blogs} boxes={boxes} />
