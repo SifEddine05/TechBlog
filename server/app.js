@@ -32,6 +32,7 @@ mongoose.connect(dbURI,{ useNewUrlParser: true, useUnifiedTopology: true })
 
     app.put('/edit',BlogsController.editBlog)
 
+    app.delete('/delete/:id' , BlogsController.delete)
     // add delete Blog 
 
     /*{

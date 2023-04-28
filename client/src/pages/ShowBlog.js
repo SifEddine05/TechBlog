@@ -1,7 +1,7 @@
 import bg from '../assets/bg.jpg'
 import { useState ,useEffect} from "react";
 import { Link } from  "react-router-dom";
-import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
+import { useHistory, useParams } from 'react-router-dom/cjs/react-router-dom.min';
 
 const ShowBlog = () => {
     
@@ -13,7 +13,7 @@ const ShowBlog = () => {
         //this function must be excuted when we upload paeg
     }
     let {id} = useParams()
-
+    const history = useHistory()
     useEffect (()=>{
         fetch('http://localhost:5000/getBlog/'+id)
         .then(res => {
@@ -31,6 +31,20 @@ const ShowBlog = () => {
             MyBlog()
         }
         ,[])
+
+
+
+        const deleted = (()=>{
+            fetch('http://localhost:5000/delete/'+blog._id , {method: 'DELETE'  }
+            )
+            .then(res=>{
+                setError('the Blog is delted')
+                history.push('/') 
+            })
+            .catch(err=>{
+                setError(Error.message)
+            })
+        })
     return (
     
     <div  className="shadow-xl mx-[10%] rounded-lg bg-[#29abe2] my-[3%] bg-opacity-5 lg:p-5 md:p-4 sm:p-3 p-2">   
@@ -51,7 +65,7 @@ const ShowBlog = () => {
         </p>
         <div className='flex justify-end gap-2'>
           {visiblite &&  <button className="  border-2 shadow-lg border-gray-300 text-gray-900 bg-[#29abe2] hover:cursor-pointer hover:text-white lg:text-[16px] font-semibold md:text-[13px] sm:text-[10px] text-[7px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block   md:p-2.5 p-1 "  ><Link to={'/edit/'+blog._id}>Edit</Link></button>}
-          {visiblite && <button className="  border-2 shadow-lg border-gray-300 text-gray-900 bg-[#29abe2] hover:cursor-pointer hover:text-white lg:text-[16px] font-semibold md:text-[13px] sm:text-[10px] text-[7px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block   md:p-2.5 p-1 "  >Delete</button> }
+          {visiblite && <button className="  border-2 shadow-lg border-gray-300 text-gray-900 bg-[#29abe2] hover:cursor-pointer hover:text-white lg:text-[16px] font-semibold md:text-[13px] sm:text-[10px] text-[7px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block   md:p-2.5 p-1 " onClick={deleted} >Delete</button> }
         
         </div>
         

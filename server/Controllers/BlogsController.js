@@ -44,3 +44,16 @@ module.exports.getBlog = async (req,res)=>{
             res.status(400).json("probleme in editing ")
         }
     } 
+
+
+    module.exports.delete = async (req,res)=>{
+        try{
+            const blog = await Blogs.deleteOne({_id:req.params.id})
+            res.status(200).json('The blog is succescufly deleted')
+        }
+        catch(err)
+        {
+            res.status(400).json(err)
+
+        }
+    }
