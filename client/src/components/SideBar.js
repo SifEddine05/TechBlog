@@ -4,21 +4,67 @@ import { useState } from 'react';
 
 
 
-const SideBar = () => {
+const SideBar = ({func , blogs , boxes}) => {
 
     const [FilterCategory, setFilter1] = React.useState('All');
+    const [Tab1 ,setTab1] =useState(blogs)
     const handlChange1 =(e)=>{
         setFilter1(e.target.value)
-        console.log(e.target.value);
+        let value = e.target.value
+        const fc = blogs.filter((elem)=>{
+            return (elem.category === value)
+        }) 
+        if(value==='All') {
+            func(blogs)
+            setTab1(blogs)
+        }
+        else
+        {
+            func(fc)
+            setTab1(fc)
+        }
+       
     }  
-    const [FilterAuthor, setFilter2] = React.useState('All');
+    const [FilterAuthor, setFilter2] = React.useState('');
     const handlChange2 =(e)=>{
         setFilter2(e.target.value)
+        let value1 = e.target.value.toUpperCase();
+        const myRegex = new RegExp(value1);
+
+        const fc = blogs.filter((elem)=>{
+            console.log(elem.auther.toUpperCase());
+            return ( myRegex.test(elem.auther.toUpperCase()))
+        }) 
+        if(value1==='') {
+            func(blogs)
+            setTab1(blogs)
+        }
+        else
+        {
+            func(fc)
+            setTab1(fc)
+        }
+
     }   
     const [search , setSearch]= useState('');
     const handelChangeText =(e)=>{
         setSearch(e.target.value)
-        console.log(e.target.value);
+        let value1 = e.target.value.toUpperCase();
+        const myRegex = new RegExp(value1);
+
+        const fc = blogs.filter((elem)=>{
+            console.log(elem.description.toUpperCase());
+            return ( myRegex.test(elem.description.toUpperCase()))
+        }) 
+        if(value1==='') {
+            func(blogs)
+            setTab1(blogs)
+        }
+        else
+        {
+            func(fc)
+            setTab1(fc)
+        }
     }
     return (
         <div className='  mr-[2%] flex  flex-row items-center  justify-around '>
@@ -35,15 +81,8 @@ const SideBar = () => {
                             <option value={'Cs'}>Cyper Security </option>    
                         </select>
                 </label>
-                <label className='lg:text-[18px] md:text-[14px] sm:text-[12px] text-[7px] font-medium text-left leading-1' >Filter By Author<br/>
-                    <select  value={FilterAuthor} onChange={handlChange2}  className=" w-full hover:cursor-pointer font-medium bg-white border-2 shadow-lg border-gray-300 text-gray-900 lg:text-[16px] md:text-[13px] sm:text-[10px] text-[7px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block  lg:p-2.5 p-1 ">
-                            <option selected value={'All'}>All</option>
-                            <option value={'Sifou'}>Sifou </option>
-                            <option value={'Khaled'}>Khaled</option>
-                            <option value={'Rami'}>Rami</option>
-                            <option value={'Ahmed'}>Ahmed </option>
-                            <option value={'Rafik'}>Rafik </option>    
-                        </select>
+                <label className="lg:text-[18px]   md:text-[14px] sm:text-[12px] text-[7px] font-medium "> Filter By Author <br/>
+                    <input type="search" value={FilterAuthor} placeholder="search by Author" maxLength='10' onInput={handlChange2} className=" mb-[10%] bg-gray-50 border-2 shadow-lg border-gray-300 text-gray-900 lg:text-[16px] md:text-[13px] sm:text-[10px] text-[7px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full md:p-2.5 p-1 "/>
                 </label>
         </div>
 
