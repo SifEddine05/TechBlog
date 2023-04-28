@@ -1,7 +1,8 @@
 
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 
 const EditBlog = () => {
     const[Time,setTime]=useState(Date().toLocaleString())
@@ -14,6 +15,33 @@ const EditBlog = () => {
 
     const [error,setError] = useState(null)
     const history = useHistory()
+    const [blog,setBlog]=useState({})
+    let {id} = useParams()
+
+    useEffect(()=>{
+        setError(null)
+        fetch('http://localhost:5000/getBlog/'+id)
+        .then(res => {
+            if(!res.ok)
+            {
+                throw Error('Error in getting data')
+            }
+            return res.json()})
+        .then (data => {
+            setBlog(data)
+            setName(data.auther)
+            setTitle(data.title)
+            setCategory(data.category)
+            setDescription(data.description)
+            setBody(data.body)
+        } ) 
+        .catch(Error => {
+            setError(Error.message)
+        } )
+        }
+        ,[])
+
+
     const submit = ()=>{
         setError(null)
         setTime(Date().toLocaleString())

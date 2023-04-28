@@ -20,7 +20,7 @@ function App() {
         <Route exact path="/"> <NavBar /> <Home /></Route>
         <Route exact path="/newBlog"> <NavBar /> <AddBlog /></Route>
         <Route exact path="/blogs/:id"><NavBar /> <ShowBlog /></Route>
-        <Route exact path="/edit"> <NavBar /> <EditBlog /></Route>
+        <Route exact path="/edit/:id"> <NavBar /> <EditBlog /></Route>
         <Route exact path="/login" ><Login /></Route>
         <Route exact path="/signup" ><SignUp /></Route>
         <Route exact path="/frgpass" ><Forgotpwd /></Route>
