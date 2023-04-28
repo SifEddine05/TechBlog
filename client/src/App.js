@@ -24,7 +24,6 @@ function App() {
         <Route exact path="/login" ><Login /></Route>
         <Route exact path="/signup" ><SignUp /></Route>
         <Route exact path="/frgpass" ><Forgotpwd /></Route>
-
       </Switch>
     </Router>
    

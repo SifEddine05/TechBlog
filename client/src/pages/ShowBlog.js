@@ -33,7 +33,8 @@ const ShowBlog = () => {
         ,[])
     return (
     
-    <div  className="shadow-xl mx-[10%] rounded-lg bg-[#29abe2] my-[3%] bg-opacity-5 lg:p-5 md:p-4 sm:p-3 p-2">        
+    <div  className="shadow-xl mx-[10%] rounded-lg bg-[#29abe2] my-[3%] bg-opacity-5 lg:p-5 md:p-4 sm:p-3 p-2">   
+        {error && <h3 className="mt-4 md:text-lg text-sm text-red-600 font-bold mb-4 ml-4">{error} </h3> }     
         <div className='flex justify-between'>
             <div>
                 <h1 className='text-center lg:text-[40px] md:text-[30px]  sm:text-[20px]  text-[10px]   font-semibold  '>{blog.title}</h1>

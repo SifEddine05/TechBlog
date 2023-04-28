@@ -1,7 +1,7 @@
 
 
 import { useState } from "react";
-
+import { useHistory } from "react-router-dom/cjs/react-router-dom";
 const AddBlog = () => {
     const[Time,setTime]=useState(Date().toLocaleString())
     const [name,setName]=useState('')
@@ -11,9 +11,11 @@ const AddBlog = () => {
     const [description,setDescription]=useState('')
     const [body,setBody]=useState('')
 
+    const [error,setError] = useState(null)
+    const history = useHistory()   
     const submit = ()=>{
+        setError(null)
         setTime(Date().toLocaleString())
-        console.log(Time,name,email,title,category,description,body);
         const blog = {
             title:title ,
             category:category,
@@ -22,12 +24,19 @@ const AddBlog = () => {
             body:body,
             nbr_views:0,
         }
-        fetch('http://localhost:5000/newBlog' , { method : 'POST' , 
+        if(name==='' || email==='' || category==='' || name ==='' || description==='' || body===''){
+            setError('Please Fill All the fields ')
+        }
+        else{
+            fetch('http://localhost:5000/newBlog' , { method : 'POST' , 
 				      headers : {"Content-Type" : "application/json" },  
 				      body : JSON.stringify(blog) 
 				      } )
-				      .then((res)=> console.log(res) )
-				      .catch(err=> console.log('err'))
+				      .then((res)=>{   setError('Your Blog is Added succesfuly')
+                                history.push('/')
+                    })
+				      .catch(err=>setError(err.message) )
+        }
     } 
     return ( 
         
@@ -78,6 +87,7 @@ const AddBlog = () => {
                     Date of Publication 
                     <input type="text" disabled value={Time} required   className="mr-[5%] w-[90%] bg-gray-50 border-2 shadow-lg border-gray-300 text-gray-900 lg:text-[16px] md:text-[13px] sm:text-[10px] text-[7px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block  md:p-2.5 p-1 "/>
                 </label>
+                {error && <h3 className="mt-4 md:text-lg text-sm text-red-600 font-bold mb-4 ml-4">{error} </h3> }
                 <input type="submit" className=" mb-[10%]  border-2 shadow-lg border-gray-300 text-gray-900 bg-[#29abe2] hover:cursor-pointer hover:text-white lg:text-[16px] font-semibold md:text-[13px] sm:text-[10px] text-[7px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block   md:p-2.5 p-1 " onClick={submit} />
             </div>
         </form>
