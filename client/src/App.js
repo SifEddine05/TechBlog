@@ -5,7 +5,7 @@ import ShowBlog from "./pages/ShowBlog";
 import EditBlog from "./pages/EditBlog";
 import Login from "./pages/Login";
 
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, BrowserRouter, Routes } from 'react-router-dom';
 import SignUp from "./pages/SignUp";
 import Forgotpwd from "./pages/Forgotpwd";
 
@@ -15,17 +15,18 @@ import Forgotpwd from "./pages/Forgotpwd";
 function App() {
   return (
    
-    <Router>
-      <Switch>
-        <Route exact path="/"> <NavBar /> <Home /></Route>
-        <Route exact path="/newBlog"> <NavBar /> <AddBlog /></Route>
-        <Route exact path="/blogs/:id"><NavBar /> <ShowBlog /></Route>
-        <Route exact path="/edit/:id"> <NavBar /> <EditBlog /></Route>
-        <Route exact path="/login" ><Login /></Route>
-        <Route exact path="/signup" ><SignUp /></Route>
-        <Route exact path="/frgpass" ><Forgotpwd /></Route>
-      </Switch>
-    </Router>
+    <BrowserRouter>
+      <Routes>
+        <Route  path="/" element={<Home />} /> 
+        <Route  path="/newBlog" element={<AddBlog/>}/> 
+        <Route  path="/blogs/:id" element={<ShowBlog/>}/>
+        <Route  path="/edit/:id" element={<EditBlog/>}/> 
+
+        <Route  path="/login" element={<Login/>}/>
+        <Route  path="/signup" element={<SignUp/>}/>
+        <Route  path="/frgpass" element={<Forgotpwd/>}/>
+      </Routes>
+    </BrowserRouter>
    
   );
 }

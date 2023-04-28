@@ -2,7 +2,7 @@ import bg from '../assets/bg.jpg'
 import note from '../assets/note.png'
 import date from '../assets/date.png'
 import more from '../assets/more.png'
-import { Link } from 'react-router-dom/cjs/react-router-dom.min'
+import { Link } from 'react-router-dom'
 import{ AiOutlineEye } from 'react-icons/ai'
 
 // we need a function to see if the blog existe in the table of user blogs we add delete and mofdifie button else we dont 

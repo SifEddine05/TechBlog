@@ -1,8 +1,8 @@
 
 
 import { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
+import NavBar from "../components/NavBar";
+import { useNavigate, useParams } from "react-router-dom";
 
 const EditBlog = () => {
     const[Time,setTime]=useState(Date().toLocaleString())
@@ -15,7 +15,7 @@ const EditBlog = () => {
     const [views , setViews]=useState(0)
     const [error,setError] = useState(null)
     const [_id,setID] =useState('')
-    const history = useHistory()
+    const navigate = useNavigate()
     const [blog,setBlog]=useState({})
     let {id} = useParams()
 
@@ -70,11 +70,13 @@ const EditBlog = () => {
 				      .then((res)=>{   
                             console.log(res);
                             setError('Your Blog is Added succesfuly')
-                                history.push('/')
+                                navigate('/')
                     })
 				      .catch(err=>setError(err.message) )
         }    } 
-    return (    
+    return (   
+        <div>
+        <NavBar />
         <div className="shadow-xl mx-[10%] lg:p-5 md:p-4 sm:p-3 p-2 bg-[#29abe2] bg-opacity-5 rounded-xl">
         <h1 className='text-center lg:text-[40px] md:text-[30px]  sm:text-[20px]  text-[10px]  lg:mb-10 md:mb-8 sm:mb-6 mb-4 font-semibold text-[#29abe2] '>Edit Blog</h1>
         <form action='post' className="ml-[15%]">
@@ -127,6 +129,7 @@ const EditBlog = () => {
             </div>
         </form>
     </div>
+    </div> 
      );
 }
  

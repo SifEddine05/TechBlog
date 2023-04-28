@@ -1,7 +1,7 @@
 import bg from '../assets/bg.jpg'
 import { useState ,useEffect} from "react";
-import { Link } from  "react-router-dom";
-import { useHistory, useParams } from 'react-router-dom/cjs/react-router-dom.min';
+import { Link, useNavigate, useParams } from  "react-router-dom";
+import NavBar from '../components/NavBar';
 
 const ShowBlog = () => {
     
@@ -13,7 +13,7 @@ const ShowBlog = () => {
         //this function must be excuted when we upload paeg
     }
     let {id} = useParams()
-    const history = useHistory()
+    const navigate = useNavigate()
     useEffect (()=>{
         fetch('http://localhost:5000/getBlog/'+id)
         .then(res => {
@@ -39,14 +39,15 @@ const ShowBlog = () => {
             )
             .then(res=>{
                 setError('the Blog is delted')
-                history.push('/') 
+                navigate('/') 
             })
             .catch(err=>{
                 setError(Error.message)
             })
         })
     return (
-    
+    <div>
+        <NavBar />
     <div  className="shadow-xl mx-[10%] rounded-lg bg-[#29abe2] my-[3%] bg-opacity-5 lg:p-5 md:p-4 sm:p-3 p-2">   
         {error && <h3 className="mt-4 md:text-lg text-sm text-red-600 font-bold mb-4 ml-4">{error} </h3> }     
         <div className='flex justify-between'>
@@ -71,7 +72,8 @@ const ShowBlog = () => {
         
         
         
-    </div>  );
+    </div>  
+    </div>);
 }
  
 export default ShowBlog;

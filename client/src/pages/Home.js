@@ -2,6 +2,7 @@ import BoxBlog from "../components/BoxBlog";
 import SwitchBlogs from "../components/SwitchBlogs";
 import SideBar from "../components/SideBar"
 import { useEffect, useState } from "react";
+import NavBar from "../components/NavBar";
 const Home = () => {
     const [boxes,setBoxes] =useState([]) 
     const [error,setError] =useState(null) 
@@ -30,6 +31,7 @@ useEffect(()=>{
 
     return ( 
         <div>
+            <NavBar />
             <SwitchBlogs func={setBoxes} blogs={blogs}  />
             {error && <h3 className="mt-4 md:text-lg text-sm text-red-600 font-bold mb-4 ml-4">{error} </h3> }
             <div className='flex justify-center  flex-col-reverse'>

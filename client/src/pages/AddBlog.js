@@ -1,7 +1,8 @@
 
 
 import { useState } from "react";
-import { useHistory } from "react-router-dom/cjs/react-router-dom";
+import NavBar from "../components/NavBar";
+import { useNavigate } from "react-router-dom";
 const AddBlog = () => {
     const[Time,setTime]=useState(Date().toLocaleString())
     const [name,setName]=useState('')
@@ -12,7 +13,7 @@ const AddBlog = () => {
     const [body,setBody]=useState('')
 
     const [error,setError] = useState(null)
-    const history = useHistory()   
+    const navigate = useNavigate()  
     const submit = ()=>{
         setError(null)
         setTime(Date().toLocaleString())
@@ -33,13 +34,14 @@ const AddBlog = () => {
 				      body : JSON.stringify(blog) 
 				      } )
 				      .then((res)=>{   setError('Your Blog is Added succesfuly')
-                                history.push('/')
+                                navigate('/')
                     })
 				      .catch(err=>setError(err.message) )
         }
     } 
     return ( 
-        
+    <div>
+    <NavBar />
     <div className="shadow-xl mx-[10%] lg:p-5 md:p-4 sm:p-3 p-2 bg-[#29abe2] bg-opacity-5 rounded-xl">
         <h1 className='text-center lg:text-[40px] md:text-[30px]  sm:text-[20px]  text-[10px]  lg:mb-10 md:mb-8 sm:mb-6 mb-4 font-semibold text-[#29abe2] '>Add New Blog</h1>
         <form action='post' className="ml-[15%]">
@@ -91,6 +93,7 @@ const AddBlog = () => {
                 <input type="submit" className=" mb-[10%]  border-2 shadow-lg border-gray-300 text-gray-900 bg-[#29abe2] hover:cursor-pointer hover:text-white lg:text-[16px] font-semibold md:text-[13px] sm:text-[10px] text-[7px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block   md:p-2.5 p-1 " onClick={submit} />
             </div>
         </form>
+    </div>
     </div>
      );
 }
