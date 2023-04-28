@@ -21,7 +21,7 @@ const SideBar = () => {
         console.log(e.target.value);
     }
     return (
-        <div className='  mr-[2%] flex sm:flex-col flex-row items-center sm:justify-start justify-around '>
+        <div className='  mr-[2%] flex  flex-row items-center  justify-around '>
                 <label className="lg:text-[18px]   md:text-[14px] sm:text-[12px] text-[7px] font-medium "> Search <br/>
                     <input type="search" value={search} placeholder="search by words" maxLength='10' onInput={handelChangeText} className=" mb-[10%] bg-gray-50 border-2 shadow-lg border-gray-300 text-gray-900 lg:text-[16px] md:text-[13px] sm:text-[10px] text-[7px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full md:p-2.5 p-1 "/>
                 </label>

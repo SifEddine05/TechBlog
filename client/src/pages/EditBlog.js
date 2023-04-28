@@ -12,8 +12,9 @@ const EditBlog = () => {
     const [category,setCategory]=useState('')
     const [description,setDescription]=useState('')
     const [body,setBody]=useState('')
-
+    const [views , setViews]=useState(0)
     const [error,setError] = useState(null)
+    const [_id,setID] =useState('')
     const history = useHistory()
     const [blog,setBlog]=useState({})
     let {id} = useParams()
@@ -34,6 +35,8 @@ const EditBlog = () => {
             setCategory(data.category)
             setDescription(data.description)
             setBody(data.body)
+            setViews(data.nbr_views)
+            setID(data._id)
         } ) 
         .catch(Error => {
             setError(Error.message)
@@ -45,23 +48,28 @@ const EditBlog = () => {
     const submit = ()=>{
         setError(null)
         setTime(Date().toLocaleString())
-        const blog = {
+        const newblog = {
+            _id:_id,
             title:title ,
             category:category,
             auther:name,
             description:description,
             body:body,
-            nbr_views:0,
+            nbr_views:views,
         }
+
+        console.log(newblog);
         if(name==='' || email==='' || category==='' || name ==='' || description==='' || body===''){
             setError('Please Fill All the fields ')
         }
         else{
-            fetch('http://localhost:5000/newBlog' , { method : 'POST' , 
+            fetch('http://localhost:5000/edit' , { method : 'PUT' , 
 				      headers : {"Content-Type" : "application/json" },  
-				      body : JSON.stringify(blog) 
+				      body : JSON.stringify(newblog) 
 				      } )
-				      .then((res)=>{   setError('Your Blog is Added succesfuly')
+				      .then((res)=>{   
+                            console.log(res);
+                            setError('Your Blog is Added succesfuly')
                                 history.push('/')
                     })
 				      .catch(err=>setError(err.message) )
