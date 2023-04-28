@@ -1,6 +1,6 @@
 
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import NavBar from "../components/NavBar";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -17,6 +17,8 @@ const EditBlog = () => {
     const [_id,setID] =useState('')
     const navigate = useNavigate()
     const [blog,setBlog]=useState({})
+    const [image,setImage]=useState('')
+
     let {id} = useParams()
 
     useEffect(()=>{
@@ -37,6 +39,7 @@ const EditBlog = () => {
             setBody(data.body)
             setViews(data.nbr_views)
             setID(data._id)
+            setImage(data.image)
         } ) 
         .catch(Error => {
             setError(Error.message)
@@ -56,10 +59,11 @@ const EditBlog = () => {
             description:description,
             body:body,
             nbr_views:views,
+            image:image
         }
 
         console.log(newblog);
-        if(name==='' || email==='' || category==='' || name ==='' || description==='' || body===''){
+        if(name==='' || email==='' || category==='' || name ==='' || description==='' || body===''||image===''){
             setError('Please Fill All the fields ')
         }
         else{
@@ -104,10 +108,6 @@ const EditBlog = () => {
                 </label>    
             </div>
             <div className='flex justify-start  items-center lg:mt-10 md:mt-8 sm:mt-6 mt-4'>
-                <label className='lg:text-[18px] mr-[5%] md:text-[15px] sm:text-[12px] text-[8px] font-medium text-left  ' >
-                    Upload a photo for your Blog <br/>
-                    <input type='file' required  accept="image/*" className="md:text-[12px] sm:text-[10px] text-[7px] w-[100%] hover:cursor-pointer " />
-                </label>
                 <label className='lg:text-[18px] mr-[5%] md:text-[15px] sm:text-[12px] text-[8px] font-medium text-left '>
                     Description <br/>
                     <textarea value={description} onChange={(e)=>{setDescription(e.target.value)}} cols="40" rows="7" required placeholder="Write a description about your blog in 200 letters"  maxlength="200" size='200' className="w-full bg-gray-50 border-2 shadow-lg  border-gray-300 text-gray-900 lg:text-[16px] md:text-[13px] sm:text-[10px] text-[7px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block  md:p-2.5 p-1 "></textarea>

@@ -1,8 +1,9 @@
 
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import NavBar from "../components/NavBar";
 import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 const AddBlog = () => {
     const[Time,setTime]=useState(Date().toLocaleString())
     const [name,setName]=useState('')
@@ -11,40 +12,52 @@ const AddBlog = () => {
     const [category,setCategory]=useState('')
     const [description,setDescription]=useState('')
     const [body,setBody]=useState('')
+    const [image , setImage] =useState('')
+    const [file , setFile] =useState(null)
+    const fileInputRef = useRef(null)
 
     const [error,setError] = useState(null)
     const navigate = useNavigate()  
-    const submit = ()=>{
+    const submit = async ()=>{
+        const file = fileInputRef.current.files[0];
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('upload_preset', 'TechBlog');
+        const response = await axios.post(
+            'https://api.cloudinary.com/v1_1/dc3fxvt26/image/upload',
+            formData
+          );
         setError(null)
         setTime(Date().toLocaleString())
-        const blog = {
-            title:title ,
-            category:category,
-            auther:name,
-            description:description,
-            body:body,
-            nbr_views:0,
-        }
-        if(name==='' || email==='' || category==='' || name ==='' || description==='' || body===''){
+        if(name==='' || email==='' || category==='' || name ==='' || description==='' || body==='' || image===''){
             setError('Please Fill All the fields ')
         }
         else{
-            fetch('http://localhost:5000/newBlog' , { method : 'POST' , 
+            const blog = {
+                title:title ,
+                category:category,
+                auther:name,
+                description:description,
+                body:body,
+                nbr_views:0,
+                image:response.data.secure_url
+            }
+           fetch('http://localhost:5000/newBlog' , { method : 'POST' , 
 				      headers : {"Content-Type" : "application/json" },  
 				      body : JSON.stringify(blog) 
 				      } )
 				      .then((res)=>{   setError('Your Blog is Added succesfuly')
-                                navigate('/')
+                            navigate('/')
                     })
-				      .catch(err=>setError(err.message) )
-        }
+				      .catch(err=>setError(err.message) ) }
+        
     } 
     return ( 
     <div>
     <NavBar />
     <div className="shadow-xl mx-[10%] lg:p-5 md:p-4 sm:p-3 p-2 bg-[#29abe2] bg-opacity-5 rounded-xl">
         <h1 className='text-center lg:text-[40px] md:text-[30px]  sm:text-[20px]  text-[10px]  lg:mb-10 md:mb-8 sm:mb-6 mb-4 font-semibold text-[#29abe2] '>Add New Blog</h1>
-        <form action='post' className="ml-[15%]">
+        <div  className="ml-[15%]">
             <div className="flex justify-start  items-center ">
                 <label className="lg:text-[18px] mr-[10%]  md:text-[15px] sm:text-[12px] text-[9px] font-medium "> Name <br/>
                     <input value={name} onChange={(e)=>{setName(e.target.value)}} type="text" required placeholder="john" maxLength='20'  className="bg-gray-50 border-2 shadow-lg border-gray-300 text-gray-900 lg:text-[16px] md:text-[13px] sm:text-[10px] text-[7px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full md:p-2.5 p-1 "/>
@@ -71,7 +84,9 @@ const AddBlog = () => {
             <div className='flex justify-start  items-center lg:mt-10 md:mt-8 sm:mt-6 mt-4'>
                 <label className='lg:text-[18px] mr-[5%] md:text-[15px] sm:text-[12px] text-[8px] font-medium text-left  ' >
                     Upload a photo for your Blog <br/>
-                    <input type='file' required  accept="image/*" className="md:text-[12px] sm:text-[10px] text-[7px] w-[100%] hover:cursor-pointer " />
+                    <input type='file' required ref={fileInputRef}
+                     accept="image/*" className="md:text-[12px] sm:text-[10px] text-[7px] w-[100%] hover:cursor-pointer " 
+                    />
                 </label>
                 <label className='lg:text-[18px] mr-[5%] md:text-[15px] sm:text-[12px] text-[8px] font-medium text-left '>
                     Description <br/>
@@ -90,9 +105,9 @@ const AddBlog = () => {
                     <input type="text" disabled value={Time} required   className="mr-[5%] w-[90%] bg-gray-50 border-2 shadow-lg border-gray-300 text-gray-900 lg:text-[16px] md:text-[13px] sm:text-[10px] text-[7px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block  md:p-2.5 p-1 "/>
                 </label>
                 {error && <h3 className="mt-4 md:text-lg text-sm text-red-600 font-bold mb-4 ml-4">{error} </h3> }
-                <input type="submit" className=" mb-[10%]  border-2 shadow-lg border-gray-300 text-gray-900 bg-[#29abe2] hover:cursor-pointer hover:text-white lg:text-[16px] font-semibold md:text-[13px] sm:text-[10px] text-[7px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block   md:p-2.5 p-1 " onClick={submit} />
+                <input type="submit"  className=" mb-[10%]  border-2 shadow-lg border-gray-300 text-gray-900 bg-[#29abe2] hover:cursor-pointer hover:text-white lg:text-[16px] font-semibold md:text-[13px] sm:text-[10px] text-[7px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block   md:p-2.5 p-1 " onClick={submit} />
             </div>
-        </form>
+        </div>
     </div>
     </div>
      );
