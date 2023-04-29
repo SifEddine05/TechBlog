@@ -44,8 +44,10 @@ const AddBlog = () => {
                 image:response.data.secure_url
             }
            fetch('http://localhost:5000/newBlog' , { method : 'POST' , 
-				      headers : {"Content-Type" : "application/json" },
+				      headers : {"Content-Type" : "application/json" ,
                       'Authorization' : 'Bearer '+user.token,
+                    },
+                      
 				      body : JSON.stringify(blog) 
 				      } )
 				      .then((res)=>{   setError('Your Blog is Added succesfuly')

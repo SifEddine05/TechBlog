@@ -3,13 +3,21 @@ import SwitchBlogs from "../components/SwitchBlogs";
 import SideBar from "../components/SideBar"
 import { useEffect, useState } from "react";
 import NavBar from "../components/NavBar";
+import { useAuthContext } from "../hooks/useAuthContext";
 const Home = () => {
+    const {user}=useAuthContext()
     const [boxes,setBoxes] =useState([]) 
     const [error,setError] =useState(null) 
     const [blogs , setBlogs]=useState([])
 useEffect(()=>{
    setError(null)
-    fetch('http://localhost:5000/blogs')
+    fetch('http://localhost:5000/blogs',
+    {
+        headers: new Headers({
+            'Authorization': 'Bearer '+user.token,
+            'Content-Type': 'application/json'
+          })
+    })
     .then(res => {
         if(!res.ok)
         {

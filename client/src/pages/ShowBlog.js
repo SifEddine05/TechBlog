@@ -2,9 +2,10 @@ import bg from '../assets/bg.jpg'
 import { useState ,useEffect} from "react";
 import { Link, useNavigate, useParams } from  "react-router-dom";
 import NavBar from '../components/NavBar';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 const ShowBlog = () => {
-    
+    const {user}=useAuthContext()
     const [blog,setBlog]=useState({})
     const [error,setError] =useState(null) 
     const[visiblite,setvisiblite] =useState(true) ; 
@@ -15,7 +16,12 @@ const ShowBlog = () => {
     let {id} = useParams()
     const navigate = useNavigate()
     useEffect (()=>{
-        fetch('http://localhost:5000/getBlog/'+id)
+        fetch('http://localhost:5000/getBlog/'+id  ,{
+            headers: new Headers({
+                'Authorization': 'Bearer '+user.token,
+                'Content-Type': 'application/json'
+              })
+        })
         .then(res => {
             if(!res.ok)
             {
@@ -35,8 +41,10 @@ const ShowBlog = () => {
 
 
         const deleted = (()=>{
-            fetch('http://localhost:5000/delete/'+blog._id , {method: 'DELETE'  }
-            )
+            fetch('http://localhost:5000/delete/'+blog._id , {method: 'DELETE' ,
+            headers : {"Content-Type" : "application/json",
+            'Authorization': 'Bearer '+user.token, }
+        })
             .then(res=>{
                 setError('the Blog is delted')
                 navigate('/') 

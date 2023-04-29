@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import NavBar from "../components/NavBar";
 import { useNavigate, useParams } from "react-router-dom";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 const EditBlog = () => {
     const[Time,setTime]=useState(Date().toLocaleString())
@@ -20,10 +21,16 @@ const EditBlog = () => {
     const [image,setImage]=useState('')
 
     let {id} = useParams()
+    const {user} =useAuthContext()
 
     useEffect(()=>{
         setError(null)
-        fetch('http://localhost:5000/getBlog/'+id)
+        fetch('http://localhost:5000/getBlog/'+id , {
+            headers: new Headers({
+              'Authorization': 'Bearer '+user.token,
+              'Content-Type': 'application/json'
+            })
+        })
         .then(res => {
             if(!res.ok)
             {
@@ -68,7 +75,9 @@ const EditBlog = () => {
         }
         else{
             fetch('http://localhost:5000/edit' , { method : 'PUT' , 
-				      headers : {"Content-Type" : "application/json" },  
+				      headers : {"Content-Type" : "application/json",
+                      'Authorization': 'Bearer '+user.token,
+                    },  
 				      body : JSON.stringify(newblog) 
 				      } )
 				      .then((res)=>{   
