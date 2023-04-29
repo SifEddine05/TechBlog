@@ -11,7 +11,6 @@ const SignUp = () => {
     const [name, setName]=useState('')
 
     const submit = async()=>{
-        console.log(email,password,name);
         const res = await signup(email,password,name)
     }
     return ( 
