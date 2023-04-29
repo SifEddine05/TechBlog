@@ -17,6 +17,10 @@ const blog = new Schema ({
             type : String , 
             require : true  , 
         },
+        email : {
+            type:String ,
+            require : true ,
+        },
         description :{
             type:String ,
             require : true ,

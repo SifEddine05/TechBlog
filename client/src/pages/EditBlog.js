@@ -64,6 +64,7 @@ const EditBlog = () => {
             title:title ,
             category:category,
             auther:name,
+            email:email,
             description:description,
             body:body,
             nbr_views:views,

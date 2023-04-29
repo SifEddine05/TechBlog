@@ -10,7 +10,7 @@ const ShowBlog = () => {
     const [error,setError] =useState(null) 
     const[visiblite,setvisiblite] =useState(true) ; 
     const MyBlog =(userName)=>{ // test if the blog is created by the current user or not to give him the posibilte to edit and to delete our not 
-        if(user.name === userName)
+        if(user.email === userName)
         {
             setvisiblite(true);
         }
@@ -36,7 +36,7 @@ const ShowBlog = () => {
             return res.json()})
         .then (data => {
             setBlog(data)
-            MyBlog(data.auther)
+            MyBlog(data.email)
 
         } ) 
         .catch(Error => {
