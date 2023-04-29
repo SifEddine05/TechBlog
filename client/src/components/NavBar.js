@@ -1,13 +1,17 @@
 import logo from '../assets/logo.png'
 import contact from '../assets/identification.png'
 import about from '../assets/info.png'
-import logout from '../assets/logout.png'
+import logout1 from '../assets/logout.png'
 import { Link } from  "react-router-dom";
 import { useState } from 'react';
 import user from '../assets/engineer.png'
+import { useLogout } from '../hooks/useLogout';
 
 const NavBar = () => {
-   
+   const {logout} =useLogout()
+   const handleClick =async ()=>{
+    await logout()
+   }
     return ( 
     <nav className='bg-[#29abe2] flex justify-between  rounded-xl  mx-[12.5%] w-[75%] my-2 shadow-lg'>
         <div className="flex justify-start items-center">
@@ -19,8 +23,8 @@ const NavBar = () => {
                 <h3 className='lg:text-[18px] md:text-[14px] sm:text-[12px] text-[10px] text-[#FFF] ml-2'>Sifou</h3>
             </div>
             <div className='flex justify-around items-center group'>
-                <Link to='/LogOut' className='lg:w-[35px] md:w-[30px] sm:w-[20px] w-[10px] lg:mr-4 md:mr-3 mr-2 '><img src={logout} alt='logout' /></Link> 
-                <Link to='/LogOut' className='hidden group-hover:block lg:mr-4 md:mr-3 mr-2 hover:text-[#000] text-[#FFFF] lg:text-[18px] md:text-[14px] sm:text-[12px] text-[10px]'>LogOut</Link> 
+                <button onClick={handleClick} className='lg:w-[35px] md:w-[30px] sm:w-[20px] w-[10px] lg:mr-4 md:mr-3 mr-2 '><img src={logout1} alt='logout' /></button> 
+                <button onClick={handleClick}   className='hidden group-hover:block lg:mr-4 md:mr-3 mr-2 hover:text-[#000] text-[#FFFF] lg:text-[18px] md:text-[14px] sm:text-[12px] text-[10px]'>LogOut</button> 
             </div>
         </div>
        

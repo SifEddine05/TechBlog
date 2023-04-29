@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import login from '../assets/Login.jpg'
+import login1 from '../assets/Login.jpg'
 import { Link } from  "react-router-dom";
 import { useLogin } from '../hooks/useLogin';
+import { useNavigate } from 'react-router-dom/dist';
 
 
 
@@ -10,6 +11,7 @@ const Login = () => {
     const [email,setEmail]=useState('')
     const [password,setPassword]=useState('')
     const {login} =useLogin()
+    const navigate =useNavigate()
     const submit =async()=>{
         setError(null)
         if(email==='' || password==='')
@@ -18,7 +20,7 @@ const Login = () => {
         }
         else{
             const user = await login(email,password,setError)
-            
+            navigate('/')
         }
     }
     return ( 
@@ -44,7 +46,7 @@ const Login = () => {
                 <button className="  border-2 shadow-lg border-gray-300 text-gray-900 bg-[#29abe2] hover:cursor-pointer hover:text-white lg:text-[16px] font-semibold md:text-[13px] sm:text-[10px] text-[7px] rounded-lg focus:ring-blue-500 focus:border-blue-500    md:p-2.5 p-1  block w-[50%] mt-[10%] ml-[12%]"  onClick={submit}>Login</button>
                 <hr className='mt-[5%] mb-[5%] w-[75%]'/> 
             </div>
-            <img src={login} alt='login' className=' w-[60%] rounded-lg  '/>
+            <img src={login1} alt='login' className=' w-[60%] rounded-lg  '/>
         </div>     
     </div> );
 }
