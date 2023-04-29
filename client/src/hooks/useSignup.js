@@ -8,7 +8,7 @@ export const useSignup =()=>{
     const navigate = useNavigate()
     const signup= async (email,password,name )=>{
         console.log(email,password,name);
-        const response = await fetch('http://localhost:5000/signup' , { method : 'POST' , 
+        const response = await fetch('https://techblog-nslo.onrender.com/signup' , { method : 'POST' , 
         headers : {"Content-Type" : "application/json" },  
         body : JSON.stringify({name:name,email:email,password:password}) 
         } )

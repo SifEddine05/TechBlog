@@ -22,7 +22,7 @@ const ShowBlog = () => {
     let {id} = useParams()
     const navigate = useNavigate()
     useEffect (()=>{
-        fetch('http://localhost:5000/getBlog/'+id  ,{
+        fetch('https://techblog-nslo.onrender.com/getBlog/'+id  ,{
             headers: new Headers({
                 'Authorization': 'Bearer '+user.token,
                 'Content-Type': 'application/json'
@@ -48,7 +48,7 @@ const ShowBlog = () => {
 
 
         const deleted = (()=>{
-            fetch('http://localhost:5000/delete/'+blog._id , {method: 'DELETE' ,
+            fetch('https://techblog-nslo.onrender.com/delete/'+blog._id , {method: 'DELETE' ,
             headers : {"Content-Type" : "application/json",
             'Authorization': 'Bearer '+user.token, }
         })

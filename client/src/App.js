@@ -18,7 +18,7 @@ function App() {
    
     <BrowserRouter>
       <Routes>
-        <Route  path="/" element={<Home />} /> 
+        <Route  path="/" element={<RequireAuth><Home /></RequireAuth>} /> 
         <Route  path="/newBlog" element={<RequireAuth><AddBlog/></RequireAuth>}/> 
         <Route  path="/blogs/:id" element={<RequireAuth><ShowBlog/></RequireAuth>}/>
         <Route  path="/edit/:id" element={<RequireAuth><EditBlog/></RequireAuth>}/> 

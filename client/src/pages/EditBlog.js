@@ -25,7 +25,7 @@ const EditBlog = () => {
 
     useEffect(()=>{
         setError(null)
-        fetch('http://localhost:5000/getBlog/'+id , {
+        fetch('https://techblog-nslo.onrender.com/getBlog/'+id , {
             headers: new Headers({
               'Authorization': 'Bearer '+user.token,
               'Content-Type': 'application/json'
@@ -76,7 +76,7 @@ const EditBlog = () => {
             setError('Please Fill All the fields ')
         }
         else{
-            fetch('http://localhost:5000/edit' , { method : 'PUT' , 
+            fetch('https://techblog-nslo.onrender.com/edit' , { method : 'PUT' , 
 				      headers : {"Content-Type" : "application/json",
                       'Authorization': 'Bearer '+user.token,
                     },  
