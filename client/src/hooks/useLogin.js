@@ -6,7 +6,7 @@ export const useLogin =()=>{
 	const {dispatch} =  useAuthContext()
 	const navigate =useNavigate()
 	const login = async (email,password,setError)=>{
-		const response = await fetch('http://localhost:5000/login', { method : 'POST' , 
+		const response = await fetch('https://techblog-nslo.onrender.com/login', { method : 'POST' , 
         headers : {"Content-Type" : "application/json" },  
         body : JSON.stringify({email:email,password:password}) 
         } ) 

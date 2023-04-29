@@ -6,7 +6,7 @@ import { useEffect } from "react";
 
 const RequireAuth = ({children}) => {
     const {user} = useAuthContext()
-    
+    console.log(user);
     if(!user){
         return (<Navigate to='/login' />)
     }

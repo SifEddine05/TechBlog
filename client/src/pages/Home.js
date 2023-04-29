@@ -11,7 +11,7 @@ const Home = () => {
     const [blogs , setBlogs]=useState([])
 useEffect(()=>{
    setError(null)
-    fetch('http://localhost:5000/blogs',
+    fetch('https://techblog-nslo.onrender.com/blogs',
     {
         headers: new Headers({
             'Authorization': 'Bearer '+user.token,
