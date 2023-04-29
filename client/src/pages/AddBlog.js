@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import NavBar from "../components/NavBar";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
+import { useAuthContext } from "../hooks/useAuthContext";
 const AddBlog = () => {
     const[Time,setTime]=useState(Date().toLocaleString())
     const [name,setName]=useState('')
@@ -15,7 +16,7 @@ const AddBlog = () => {
     const [image , setImage] =useState('')
     const [file , setFile] =useState(null)
     const fileInputRef = useRef(null)
-
+    const {user} =useAuthContext()
     const [error,setError] = useState(null)
     const navigate = useNavigate()  
     const submit = async ()=>{
@@ -43,7 +44,8 @@ const AddBlog = () => {
                 image:response.data.secure_url
             }
            fetch('http://localhost:5000/newBlog' , { method : 'POST' , 
-				      headers : {"Content-Type" : "application/json" },  
+				      headers : {"Content-Type" : "application/json" },
+                      'Authorization' : 'Bearer '+user.token,
 				      body : JSON.stringify(blog) 
 				      } )
 				      .then((res)=>{   setError('Your Blog is Added succesfuly')
