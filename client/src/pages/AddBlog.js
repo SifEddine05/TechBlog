@@ -49,7 +49,7 @@ const AddBlog = () => {
                 nbr_views:0,
                 image:response.data.secure_url
             }
-           fetch('https://techblog-nslo.onrender.com/newBlog' , { method : 'POST' , 
+           fetch('http://localhost:5000/newBlog' , { method : 'POST' , 
 				      headers : {"Content-Type" : "application/json" ,
                       'Authorization' : 'Bearer '+user.token,
                     },

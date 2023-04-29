@@ -25,7 +25,7 @@ const EditBlog = () => {
 
     useEffect(()=>{
         setError(null)
-        fetch('https://techblog-nslo.onrender.com/getBlog/'+id , {
+        fetch('http://localhost:5000/getBlog/'+id , {
             headers: new Headers({
               'Authorization': 'Bearer '+user.token,
               'Content-Type': 'application/json'
@@ -76,7 +76,7 @@ const EditBlog = () => {
             setError('Please Fill All the fields ')
         }
         else{
-            fetch('https://techblog-nslo.onrender.com/edit' , { method : 'PUT' , 
+            fetch('http://localhost:5000/edit' , { method : 'PUT' , 
 				      headers : {"Content-Type" : "application/json",
                       'Authorization': 'Bearer '+user.token,
                     },  
@@ -94,7 +94,7 @@ const EditBlog = () => {
         <NavBar />
         <div className="shadow-xl mx-[10%] lg:p-5 md:p-4 sm:p-3 p-2 bg-[#29abe2] bg-opacity-5 rounded-xl">
         <h1 className='text-center lg:text-[40px] md:text-[30px]  sm:text-[20px]  text-[10px]  lg:mb-10 md:mb-8 sm:mb-6 mb-4 font-semibold text-[#29abe2] '>Edit Blog</h1>
-        <form action='post' className="ml-[15%]">
+        <div  className="ml-[15%]">
             <div className="flex justify-start  items-center ">
                 <label className="lg:text-[18px] mr-[10%]  md:text-[15px] sm:text-[12px] text-[9px] font-medium "> Name <br/>
                     <input disabled value={name} onChange={(e)=>{setName(e.target.value)}} type="text" required placeholder="john" maxLength='20'  className="bg-gray-50 border-2 shadow-lg border-gray-300 text-gray-900 lg:text-[16px] md:text-[13px] sm:text-[10px] text-[7px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full md:p-2.5 p-1 "/>
@@ -138,7 +138,7 @@ const EditBlog = () => {
                 {error && <h3 className="mt-4 md:text-lg text-sm text-red-600 font-bold mb-4 ml-4">{error} </h3> }
                 <input type="submit" className=" mb-[10%]  border-2 shadow-lg border-gray-300 text-gray-900 bg-[#29abe2] hover:cursor-pointer hover:text-white lg:text-[16px] font-semibold md:text-[13px] sm:text-[10px] text-[7px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block   md:p-2.5 p-1 " onClick={submit} />
             </div>
-        </form>
+        </div>
     </div>
     </div> 
      );
