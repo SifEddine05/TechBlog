@@ -66,7 +66,7 @@ UserSchema.statics.signup = async function (email,password,name) {
             throw Error('Incorrect password')
 
         }
-        return user 
+        return user
     }
 
 

@@ -38,7 +38,7 @@ const Login = () => {
                 </label>
                 <br   />
                 <label className="lg:text-[18px]  md:text-[15px] sm:text-[12px] text-[9px] font-medium "> Password 
-                    <Link to='/frgpass' className='  lg:text-[14px] md:text-[12px] sm:text-[9px] text-[7px] underline ml-[20%] text-[#293be2]'>Forgot Password?</Link>
+                    {/* <Link to='/frgpass' className='  lg:text-[14px] md:text-[12px] sm:text-[9px] text-[7px] underline ml-[20%] text-[#293be2]'>Forgot Password?</Link> */}
                     <br/>    
                     <input type="password" value={password} onChange={(e)=>{setPassword(e.target.value)}} required placeholder="Password" maxLength='50' minLength='6' className="bg-gray-50  w-full border-2 shadow-lg border-gray-300 text-gray-900 lg:text-[16px] md:text-[13px] sm:text-[10px] text-[7px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block  md:p-2.5 p-1 "/>
                 </label>

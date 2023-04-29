@@ -1,9 +1,15 @@
 const User = require('../models/User')
 const jwt = require('jsonwebtoken')
+const nodemailer = require('nodemailer')
+const validator = require('validator')
+const crypto = require('crypto')
 
 const createToken = (_id)=>{
     return jwt.sign({_id},process.env.SECRET,{expiresIn:'3d'})
 }
+
+
+
 
 module.exports.signup=async (req,res)=>{
     const {email , password ,name} = req.body 
@@ -30,3 +36,5 @@ module.exports.login=async (req,res)=>{
         res.status(400).json({error: error.message})
     }
 }
+
+
