@@ -8,6 +8,7 @@ import Login from "./pages/Login";
 import { BrowserRouter as Router, Route, Switch, BrowserRouter, Routes } from 'react-router-dom';
 import SignUp from "./pages/SignUp";
 import Forgotpwd from "./pages/Forgotpwd";
+import RequireAuth from "./components/RequireAuth";
 
 
 
@@ -17,9 +18,9 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route  path="/" element={<Home />} /> 
-        <Route  path="/newBlog" element={<AddBlog/>}/> 
-        <Route  path="/blogs/:id" element={<ShowBlog/>}/>
-        <Route  path="/edit/:id" element={<EditBlog/>}/> 
+        <Route  path="/newBlog" element={<RequireAuth><AddBlog/></RequireAuth>}/> 
+        <Route  path="/blogs/:id" element={<RequireAuth><ShowBlog/></RequireAuth>}/>
+        <Route  path="/edit/:id" element={<RequireAuth><EditBlog/></RequireAuth>}/> 
 
         <Route  path="/login" element={<Login/>}/>
         <Route  path="/signup" element={<SignUp/>}/>

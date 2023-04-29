@@ -40,6 +40,7 @@ const EditBlog = () => {
         .then (data => {
             setBlog(data)
             setName(data.auther)
+            setEmail(user.email)
             setTitle(data.title)
             setCategory(data.category)
             setDescription(data.description)
@@ -95,10 +96,10 @@ const EditBlog = () => {
         <form action='post' className="ml-[15%]">
             <div className="flex justify-start  items-center ">
                 <label className="lg:text-[18px] mr-[10%]  md:text-[15px] sm:text-[12px] text-[9px] font-medium "> Name <br/>
-                    <input value={name} onChange={(e)=>{setName(e.target.value)}} type="text" required placeholder="john" maxLength='20'  className="bg-gray-50 border-2 shadow-lg border-gray-300 text-gray-900 lg:text-[16px] md:text-[13px] sm:text-[10px] text-[7px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full md:p-2.5 p-1 "/>
+                    <input disabled value={name} onChange={(e)=>{setName(e.target.value)}} type="text" required placeholder="john" maxLength='20'  className="bg-gray-50 border-2 shadow-lg border-gray-300 text-gray-900 lg:text-[16px] md:text-[13px] sm:text-[10px] text-[7px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full md:p-2.5 p-1 "/>
                 </label>
                 <label className="lg:text-[18px]  md:text-[15px] sm:text-[12px] text-[9px] font-medium "> Email <br/>
-                    <input value={email} onChange={(e)=>{setEmail(e.target.value)}} type="email" required placeholder="john.doe@company.com" maxLength='50'  className="bg-gray-50 border-2 shadow-lg border-gray-300 text-gray-900 lg:text-[16px] md:text-[13px] sm:text-[10px] text-[7px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full md:p-2.5 p-1 "/>
+                    <input disabled value={email} onChange={(e)=>{setEmail(e.target.value)}} type="email" required placeholder="john.doe@company.com" maxLength='50'  className="bg-gray-50 border-2 shadow-lg border-gray-300 text-gray-900 lg:text-[16px] md:text-[13px] sm:text-[10px] text-[7px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full md:p-2.5 p-1 "/>
                 </label> 
             </div>
             <div className='   flex justify-start items-center lg:mt-10 md:mt-8 sm:mt-6 mt-4'>

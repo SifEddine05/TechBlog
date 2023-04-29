@@ -1,11 +1,12 @@
 import { useState } from "react";
 import add from '../assets/write.png'
 import { Link } from 'react-router-dom'
+import { useAuthContext } from "../hooks/useAuthContext";
 
 
 
 export default function SwitchBlogs({func , blogs}) {
-
+    const {user}=useAuthContext()
     const stl1='lg:text-[18px] md:text-[16px] sm:text-[12px] text-[8px]  shadow-xl border rounded-sm md:p-2 p-1 font-medium'
     const stl2='lg:text-[18px] md:text-[16px] sm:text-[12px] text-[8px]  shadow-xl border rounded-sm md:p-2 p-1 font-medium text-[#29abe2]	 bg-[#000] bg-opacity-5  shadow-inner'
     const [style1,setStyle1] =useState(stl2)
@@ -38,8 +39,10 @@ const handlClick = (e)=>{
         setStyle2(stl1)
         setStyle3(stl2)
         setAdd(true);
-
- // to do later when we do the authentification 
+        const myblogs = blogs.filter((elem)=>{
+            return (elem.auther.toUpperCase() === user.name.toUpperCase())
+        })
+        func(myblogs)
     }
 }
   return (

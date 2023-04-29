@@ -1,6 +1,6 @@
 
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import NavBar from "../components/NavBar";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
@@ -18,7 +18,11 @@ const AddBlog = () => {
     const fileInputRef = useRef(null)
     const {user} =useAuthContext()
     const [error,setError] = useState(null)
-    const navigate = useNavigate()  
+    const navigate = useNavigate() 
+    useEffect(()=>{
+        setName(user.name)
+        setEmail(user.email)    
+    },[])
     const submit = async ()=>{
         const file = fileInputRef.current.files[0];
         const formData = new FormData();
@@ -28,10 +32,11 @@ const AddBlog = () => {
             'https://api.cloudinary.com/v1_1/dc3fxvt26/image/upload',
             formData
           );
-        setError(null)
+          setError(null)
         setTime(Date().toLocaleString())
-        if(name==='' || email==='' || category==='' || name ==='' || description==='' || body==='' || image===''){
-            setError('Please Fill All the fields ')
+        if(name==='' || email==='' || category==='' ||  description==='' || body==='' ){
+            console.log(name,email,category,description,body,image);
+            setError('Please Fill All the fields')
         }
         else{
             const blog = {
@@ -64,10 +69,10 @@ const AddBlog = () => {
         <div  className="ml-[15%]">
             <div className="flex justify-start  items-center ">
                 <label className="lg:text-[18px] mr-[10%]  md:text-[15px] sm:text-[12px] text-[9px] font-medium "> Name <br/>
-                    <input value={name} onChange={(e)=>{setName(e.target.value)}} type="text" required placeholder="john" maxLength='20'  className="bg-gray-50 border-2 shadow-lg border-gray-300 text-gray-900 lg:text-[16px] md:text-[13px] sm:text-[10px] text-[7px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full md:p-2.5 p-1 "/>
+                    <input disabled value={name} onChange={(e)=>{setName(e.target.value)}} type="text" required placeholder="john" maxLength='20'  className="bg-gray-50 border-2 shadow-lg border-gray-300 text-gray-900 lg:text-[16px] md:text-[13px] sm:text-[10px] text-[7px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full md:p-2.5 p-1 "/>
                 </label>
                 <label className="lg:text-[18px]  md:text-[15px] sm:text-[12px] text-[9px] font-medium "> Email <br/>
-                    <input value={email} onChange={(e)=>{setEmail(e.target.value)}} type="email" required placeholder="john.doe@company.com" maxLength='50'  className="bg-gray-50 border-2 shadow-lg border-gray-300 text-gray-900 lg:text-[16px] md:text-[13px] sm:text-[10px] text-[7px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full md:p-2.5 p-1 "/>
+                    <input disabled value={email} onChange={(e)=>{setEmail(e.target.value)}} type="email" required placeholder="john.doe@company.com" maxLength='50'  className="bg-gray-50 border-2 shadow-lg border-gray-300 text-gray-900 lg:text-[16px] md:text-[13px] sm:text-[10px] text-[7px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full md:p-2.5 p-1 "/>
                 </label> 
             </div>
             <div className='   flex justify-start items-center lg:mt-10 md:mt-8 sm:mt-6 mt-4'>

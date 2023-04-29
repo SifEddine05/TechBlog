@@ -9,8 +9,14 @@ const ShowBlog = () => {
     const [blog,setBlog]=useState({})
     const [error,setError] =useState(null) 
     const[visiblite,setvisiblite] =useState(true) ; 
-    const MyBlog =()=>{ // test if the blog is created by the current user or not to give him the posibilte to edit and to delete our not 
-        setvisiblite(true);
+    const MyBlog =(userName)=>{ // test if the blog is created by the current user or not to give him the posibilte to edit and to delete our not 
+        if(user.name === userName)
+        {
+            setvisiblite(true);
+        }
+        else{
+            setvisiblite(false)
+        }
         //this function must be excuted when we upload paeg
     }
     let {id} = useParams()
@@ -30,11 +36,12 @@ const ShowBlog = () => {
             return res.json()})
         .then (data => {
             setBlog(data)
+            MyBlog(data.auther)
+
         } ) 
         .catch(Error => {
             setError(Error.message)
         } )
-            MyBlog()
         }
         ,[])
 
