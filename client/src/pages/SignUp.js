@@ -1,23 +1,18 @@
 import { useState } from 'react';
 import login from '../assets/Login.jpg'
 import { Link } from  "react-router-dom";
-
+import { useSignup } from '../hooks/useSignup';
 
 
 const SignUp = () => {
-    const [error,setError] = useState(null)
+    const {signup,error}=useSignup()
     const [email,setEmail]=useState('')
     const [password,setPassword]=useState('')
     const [name, setName]=useState('')
-    const submit =()=>{
-        setError(null)
-        if(email==='' || password==='' || name==='')
-        {
-            setError('Please fill all the fields')
-        }
-        else{
-            console.log(email,name,password);
-        }
+
+    const submit = async()=>{
+        console.log(email,password,name);
+        const res = await signup(email,password,name)
     }
     return ( 
         <div className="bg-[#29abe2] bg-opacity-30 lg:p-14 md:p-10 sm:p-6 p-4 ">
@@ -37,6 +32,7 @@ const SignUp = () => {
                     <br/>    
                     <input type="password"  value={password} onChange={(e)=>{setPassword(e.target.value)}} required placeholder="Password" maxLength='50' minLength='6' className="bg-gray-50 w-full border-2 shadow-lg border-gray-300 text-gray-900 lg:text-[16px] md:text-[13px] sm:text-[10px] text-[7px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block  md:p-2.5 p-1 "/>
                 </label>
+                {error && <h3 className="mt-4 md:text-lg text-sm text-red-600 font-bold mb-4 ml-4">{error} </h3> }
                 <button className="  border-2 shadow-lg border-gray-300 text-gray-900 bg-[#29abe2] hover:cursor-pointer hover:text-white lg:text-[16px] font-semibold md:text-[13px] sm:text-[10px] text-[7px] rounded-lg focus:ring-blue-500 focus:border-blue-500    md:p-2.5 p-1  block w-[50%] mt-[10%] ml-[12%]"  onClick={submit}>Sign up</button>
             </div>
             <img src={login} alt='login' className=' w-[60%] rounded-lg  '/>
