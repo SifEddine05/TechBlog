@@ -7,6 +7,7 @@ const dotenv = require('dotenv')
 
 const BlogsRoutes = require('./routes/BlogsRoutes')
 const AuthRoutes  =require('./routes/AuthRoutes')
+const requireAuth =require('./middelware/requireAuth')
 // user : TechBlog
 //password : sifou123456789
 
@@ -25,9 +26,11 @@ mongoose.connect(dbURI,{ useNewUrlParser: true, useUnifiedTopology: true })
     app.use(express.urlencoded({extended:true}))
     app.use(cors())
     dotenv.config()
-
-    app.use(BlogsRoutes)
+    
     app.use(AuthRoutes)
+    app.use(requireAuth)
+    app.use(BlogsRoutes)
+
    
     // add delete Blog 
 
