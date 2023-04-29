@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Route, Switch, BrowserRouter, Routes } from 'r
 import SignUp from "./pages/SignUp";
 import Forgotpwd from "./pages/Forgotpwd";
 import RequireAuth from "./components/RequireAuth";
+import NotFound from "./pages/NotFound";
 
 
 
@@ -25,6 +26,7 @@ function App() {
         <Route  path="/login" element={<Login/>}/>
         <Route  path="/signup" element={<SignUp/>}/>
         <Route  path="/frgpass" element={<Forgotpwd/>}/>
+        <Route path='*' element={<NotFound/>} />
       </Routes>
     </BrowserRouter>
    
