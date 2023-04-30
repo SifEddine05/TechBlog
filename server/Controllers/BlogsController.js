@@ -24,10 +24,7 @@ module.exports.addBlog=(async (req,res)=>{
 
 module.exports.getBlog = async (req,res)=>{
     try {
-        console.log(req.params.id);
-        const blog = await Blogs.find({_id:req.params.id})
-        blog[0].nbr_views = blog[0].nbr_views+1;
-        const blog1 = await Blogs.findOneAndUpdate({_id:req.params.id} , {nbr_views:blog[0].nbr_views})
+        const blog1 = await Blogs.findOneAndUpdate({_id:req.params.id} , {$inc : {nbr_views : 1 }})
         res.status(200).json(blog1);
 
     }catch(err)
