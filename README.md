@@ -7,9 +7,6 @@ The website includes an authentication system to ensure that only registered use
 
 The application is built using Node.js as the server-side runtime environment, React.js as the front-end user interface library, and MongoDB as the NoSQL database.
 
-This repository contains all the necessary code and dependencies to set up and run the web application on your local machine. You can easily clone this repository, install the dependencies, and start the server to explore the features of the application.
-
-Join our community of tech enthusiasts and start contributing to the world of computer science with your own blog posts!
 
 ## Screenshots
 
