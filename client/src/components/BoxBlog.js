@@ -8,9 +8,9 @@ import{ AiOutlineEye } from 'react-icons/ai'
 // we need a function to see if the blog existe in the table of user blogs we add delete and mofdifie button else we dont 
 const BoxBlog = ({title,author,date1,body,views,_id,image}) => {
     return ( 
-    <div className=" mr-[1%] mb-[1%] lg:h-[320px] shadow-2xl rounded-xl lg:w-[250px]  md:w-[180px]  w-[150px]  md:h-[250px] sm:h-[200px] pb-2 " >
+    <div className=" mr-[1%] mb-[1%] h-fit shadow-2xl rounded-xl lg:w-[250px]  md:w-[180px]  w-[150px] pb-2 " >
         <Link to={'/blogs/'+_id} >
-            <div className='h-[55%]'>
+            <div className='lg:h-[200px] md:h-[150px] h-[100px] '>
                 <img src={image} alt="bg" className='rounded-xl p-1 h-[100%] w-[100%]' />
             </div>
             <div className='flex justify-center'>
@@ -29,7 +29,7 @@ const BoxBlog = ({title,author,date1,body,views,_id,image}) => {
             
             </div>
             <div>
-                <p className=' lg:text-[14px] md:text-[10px] sm:text-[7px] text-[6px] text-center textopacity-75 mt-2'>{body}</p>
+                <p className=' lg:text-[14px] md:text-[10px] sm:text-[7px] text-[6px] text-center textopacity-75 mt-2 lg:w-[250px]  md:w-[180px]  w-[150px]'>{body}</p>
             </div>
             <div className='flex justify-end group sm:items-end items-center mt-1 mr-2 sm:w-full w-full'>
                 <AiOutlineEye className='sm:w-fit w-[10px]  sm:ml-0 sm:mb-0 ml-2 mb-2'/>

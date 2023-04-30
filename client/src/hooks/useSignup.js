@@ -7,7 +7,6 @@ export const useSignup =()=>{
     const [error,setError] = useState(null)
     const navigate = useNavigate()
     const signup= async (email,password,name )=>{
-        console.log(email,password,name);
         const response = await fetch('http://localhost:5000/signup' , { method : 'POST' , 
         headers : {"Content-Type" : "application/json" },  
         body : JSON.stringify({name:name,email:email,password:password}) 

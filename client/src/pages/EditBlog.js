@@ -71,7 +71,6 @@ const EditBlog = () => {
             image:image
         }
 
-        console.log(newblog);
         if(name==='' || email==='' || category==='' || name ==='' || description==='' || body===''||image===''){
             setError('Please Fill All the fields ')
         }
@@ -83,7 +82,6 @@ const EditBlog = () => {
 				      body : JSON.stringify(newblog) 
 				      } )
 				      .then((res)=>{   
-                            console.log(res);
                             setError('Your Blog is Added succesfuly')
                                 navigate('/')
                     })
@@ -105,7 +103,7 @@ const EditBlog = () => {
             </div>
             <div className='   flex justify-start items-center lg:mt-10 md:mt-8 sm:mt-6 mt-4'>
                 <label className="  lg:text-[18px]   mr-[10%] md:text-[15px] sm:text-[12px] text-[9px] font-medium text-left "> Title<br/>
-                    <input value={title} onChange={(e)=>{setTitle(e.target.value)}} type="text" required placeholder="Machine Learning"  maxlength="20"  className="w-full bg-gray-50 border-2 shadow-lg  border-gray-300 text-gray-900 lg:text-[16px] md:text-[13px] sm:text-[10px] text-[7px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block  md:p-2.5 p-1 "/>
+                    <input value={title} onChange={(e)=>{setTitle(e.target.value)}} type="text" required placeholder="Machine Learning"  maxLength="20"  className="w-full bg-gray-50 border-2 shadow-lg  border-gray-300 text-gray-900 lg:text-[16px] md:text-[13px] sm:text-[10px] text-[7px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block  md:p-2.5 p-1 "/>
                 </label>
                 <label className='lg:text-[18px]  md:text-[15px] sm:text-[12px] text-[9px] font-medium text-left ' >The Category <br/>
                     <select value={category} onChange={(e)=>{setCategory(e.target.value)}}   required className=" w-full font-medium bg-gray-50 border-2 shadow-lg border-gray-300 text-gray-900 lg:text-[16px] md:text-[13px] sm:text-[10px] text-[7px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block  lg:p-2.5 p-1 ">
@@ -121,7 +119,7 @@ const EditBlog = () => {
             <div className='flex justify-start  items-center lg:mt-10 md:mt-8 sm:mt-6 mt-4'>
                 <label className='lg:text-[18px] mr-[5%] md:text-[15px] sm:text-[12px] text-[8px] font-medium text-left '>
                     Description <br/>
-                    <textarea value={description} onChange={(e)=>{setDescription(e.target.value)}} cols="40" rows="7" required placeholder="Write a description about your blog in 200 letters"  maxlength="200" size='200' className="w-full bg-gray-50 border-2 shadow-lg  border-gray-300 text-gray-900 lg:text-[16px] md:text-[13px] sm:text-[10px] text-[7px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block  md:p-2.5 p-1 "></textarea>
+                    <textarea value={description} onChange={(e)=>{setDescription(e.target.value)}} cols="40" rows="7" required placeholder="Write a description about your blog in 200 letters"  maxLength="200" size='200' className="w-full bg-gray-50 border-2 shadow-lg  border-gray-300 text-gray-900 lg:text-[16px] md:text-[13px] sm:text-[10px] text-[7px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block  md:p-2.5 p-1 "></textarea>
                 </label>
             </div>
             <div className="mt-[10%] flex justify-start">

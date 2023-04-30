@@ -32,7 +32,6 @@ const SideBar = ({func , blogs , boxes}) => {
         const myRegex = new RegExp(value1);
 
         const fc = blogs.filter((elem)=>{
-            console.log(elem.auther.toUpperCase());
             return ( myRegex.test(elem.auther.toUpperCase()))
         }) 
         if(value1==='') {
@@ -53,7 +52,6 @@ const SideBar = ({func , blogs , boxes}) => {
         const myRegex = new RegExp(value1);
 
         const fc = blogs.filter((elem)=>{
-            console.log(elem.description.toUpperCase());
             return ( myRegex.test(elem.description.toUpperCase()))
         }) 
         if(value1==='') {
